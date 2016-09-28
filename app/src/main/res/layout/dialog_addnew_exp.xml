@@ -8,7 +8,7 @@
     <RelativeLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="350dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="57dp"
@@ -45,15 +45,28 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"/>
 
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_marginTop="10dp"
+    android:layout_height="wrap_content">
             <com.jaredrummler.materialspinner.MaterialSpinner
 
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+                android:gravity="center_vertical"
             android:id="@+id/spinner_cat_exp"
 
            android:layout_marginTop="10dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pick Category"
+        android:gravity="center_vertical"
 
+        android:textSize="18sp"
+        android:layout_toLeftOf="@id/spinner_cat_exp"/>
+</LinearLayout>
 
             <EditText
                 android:layout_width="match_parent"
@@ -76,6 +89,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Pick Date"
                 android:textSize="18sp"
+
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
@@ -93,7 +107,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="40dp"
                 android:background="@color/colorPrimary">
 
                 <ImageView
