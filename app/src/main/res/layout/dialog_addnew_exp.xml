@@ -8,10 +8,8 @@
     <RelativeLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="57dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:background="@color/white"
         android:orientation="vertical" >
 
@@ -22,91 +20,143 @@
             android:id="@+id/linearLayout">
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:background="@color/colorPrimary">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Add Expenditure"
                     android:textColor="@color/white"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
                     android:layout_centerInParent="true"/>
 
             </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
 
+                <ImageView
+                    android:id="@+id/show_img_view_exp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/f_expenses"
+
+                    />
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/choose_img_btn_exp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/show_img_view_exp"
+                    android:layout_alignEnd="@id/show_img_view_exp"
+                    android:clickable="true"
+                    app:fabSize="mini"
+                    android:src="@drawable/ic_plus_white_24dp"
+                    app:layout_anchor="@id/show_img_view_exp"
+                    app:layout_anchorGravity="bottom|right|end"
+                    android:layout_alignRight="@id/show_img_view_exp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pick Account"
+                    android:id="@+id/txt"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="24dp"
+                    android:layout_marginTop="26dp"
+                    android:textSize="14sp"
+                    />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pick Category"
+                        android:layout_marginTop="26dp"
+
+                        android:layout_marginLeft="24dp"
+                        android:textSize="14sp"
+                        />
+
+                    <com.jaredrummler.materialspinner.MaterialSpinner
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:ms_dropdown_height="wrap_content"
+                        android:textSize="14sp"
+                        app:ms_text_color="@color/colorPrimary"
+                        android:id="@+id/spinner_cat_exp"
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/txt"
+
+                    android:layout_alignParentRight="true"
+                    android:orientation="vertical">
+
+
+                    <com.jaredrummler.materialspinner.MaterialSpinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:ms_dropdown_height="wrap_content"
+                        android:textSize="14sp"
+                        app:ms_text_color="@color/colorPrimary"
+                        android:id="@+id/spinner_accnt_exp"
+                        android:prompt="@string/spinner_prompt"/>
+
+                </LinearLayout>
+            </RelativeLayout>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Amount"
+            android:textSize="14sp"
             android:id="@+id/amount_input_exp"
             android:inputType="number"
+            android:hint="Amount"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"/>
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:orientation="horizontal"
-    android:layout_marginTop="10dp"
-    android:layout_height="wrap_content">
-            <com.jaredrummler.materialspinner.MaterialSpinner
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-            android:id="@+id/spinner_cat_exp"
-
-           android:layout_marginTop="10dp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pick Category"
-        android:gravity="center_vertical"
-
-        android:textSize="18sp"
-        android:layout_toLeftOf="@id/spinner_cat_exp"/>
-</LinearLayout>
-
+            android:layout_marginTop="10dp"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Description"
-                android:inputType="number"
+                android:textSize="14sp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="10dp"/>
-
-            <com.jaredrummler.materialspinner.MaterialSpinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:id="@+id/spinner_accnt_exp"
-                android:prompt="@string/spinner_prompt"/>
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Pick Date"
-                android:textSize="18sp"
+                android:textSize="14sp"
 
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="19dp"
+                android:layout_marginRight="24dp"
                 android:id="@+id/pickDate"/>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#757575"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
                 />
 
 
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_marginTop="40dp"
                 android:background="@color/colorPrimary">
 
@@ -116,7 +166,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/ic_check_white_36dp"/>
+                    android:src="@drawable/ic_check_white_24dp"/>
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -124,7 +174,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/ic_close_white_36dp"/>
+                    android:src="@drawable/ic_close_white_24dp"/>
 
             </RelativeLayout>
 
