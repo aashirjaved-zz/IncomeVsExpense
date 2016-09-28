@@ -8,11 +8,11 @@
     <RelativeLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
-        android:layout_height="290dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="57dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/white"
         android:orientation="vertical" >
 
         <LinearLayout
@@ -20,46 +20,99 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:id="@+id/linearLayout">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/colorPrimary">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Expenditure"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:layout_centerInParent="true"/>
+
+            </RelativeLayout>
+
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Amount"
+            android:id="@+id/amount_input_exp"
             android:inputType="number"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"/>
 
-            <!--<Spinner-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:id="@+id/spinner_cat_exp"-->
-                <!--android:layout_marginTop="20dp"-->
 
-                <!--android:prompt="@string/spinner_prompt"/>-->
+            <com.jaredrummler.materialspinner.MaterialSpinner
 
-            <!--<Spinner-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="20dp"-->
-                <!--android:id="@+id/spinner_desc_exp"-->
-                <!--android:prompt="@string/spinner_prompt"/>-->
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner_cat_exp"
+
+           android:layout_marginTop="10dp" />
 
 
-            <!--<Spinner-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="20dp"-->
-                <!--android:id="@+id/spinner_accnt_exp"-->
-                <!--android:prompt="@string/spinner_prompt"/>-->
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Description"
+                android:inputType="number"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"/>
+
+            <com.jaredrummler.materialspinner.MaterialSpinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:id="@+id/spinner_accnt_exp"
+                android:prompt="@string/spinner_prompt"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Pick Date"
+                android:textSize="18sp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:id="@+id/pickDate"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#757575"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                />
 
 
-            <!--<Spinner-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="20dp"-->
-                <!--android:id="@+id/spinner_desc_exp"-->
-                <!--android:prompt="@string/spinner_prompt"/>-->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorPrimary">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/ic_check_white_36dp"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/ic_close_white_36dp"/>
+
+            </RelativeLayout>
 
         </LinearLayout>
 

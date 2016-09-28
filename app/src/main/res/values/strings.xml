@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">IncomeExpenses</string>
+    <string name="spinner_prompt">Meow</string>
+    <string-array name="entries">
+        <item>Don Quixote</item>
+        <item>Sancho Panza</item>
+        <item>Teresa Panza</item>
+        <item>Dulcinea del Toboso</item>
+        <item>Rocinante</item>
+        <item>Dapple</item>
+        <item>Cide Hamete Benengeli</item>
+        <item>Cardenio</item>
+        <item>Mambrinos Helmet</item>
+        <item>La Mancha</item>
+    </string-array>
 </resources>
