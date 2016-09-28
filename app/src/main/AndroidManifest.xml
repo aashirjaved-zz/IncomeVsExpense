@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.tayyaba.incomeexpenses">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:hardwareAccelerated="false"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity"
+            android:theme="@style/AppTheme1"
+            android:label="">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activities.ExpensesActivity"
+            android:parentActivityName=".MainActivity"
+            android:label=""/>
+        <activity android:name=".Activities.IncomeActivity"
+            android:parentActivityName=".MainActivity"
+            android:label=""/>
+        <activity android:name=".Activities.CategoriesActivity"
+            android:parentActivityName=".MainActivity"
+            android:label=""/>
+        <activity android:name=".Activities.FutureExpensesActivity"
+            android:parentActivityName=".MainActivity"
+            android:label=""/>
+        <activity android:name=".Activities.LimitsActivity" android:parentActivityName=".MainActivity"
+            android:label=""  />
+        <activity android:name=".Activities.ReportsActivity"
+            android:parentActivityName=".MainActivity"
+            android:label=""></activity>
+    </application>
+
+</manifest>

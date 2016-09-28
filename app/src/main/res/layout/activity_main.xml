@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.tayyaba.incomeexpenses.MainActivity">
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:id="@+id/toolbar_custom"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary">
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Income Expenses"
+            android:textColor="#FFF"
+            android:textSize="22sp"
+            android:textStyle="bold"/>
+
+    </android.support.v7.widget.Toolbar>
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:id="@+id/fragment_container">
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_centerHorizontal="true"
+       android:layout_centerVertical="true"
+       android:orientation="vertical">
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+
+           <FrameLayout
+               android:layout_width="wrap_content"
+               android:layout_height="120dp"
+               android:id="@+id/expenses"
+               android:layout_weight="1">
+
+               <ImageView
+                   android:layout_width="100dp"
+                   android:layout_height="100dp"
+                   android:src="@drawable/expenses"/>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Expenses"
+                   android:layout_gravity="center_horizontal|bottom"
+                   android:layout_marginTop="20dp"
+                   />
+           </FrameLayout>
+           <FrameLayout
+               android:layout_width="wrap_content"
+               android:layout_height="120dp"
+               android:layout_weight="1"
+               android:id="@+id/income"
+               android:layout_marginLeft="70dp">
+
+               <ImageView
+                   android:layout_width="100dp"
+                   android:layout_height="100dp"
+                   android:src="@drawable/income"/>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Income"
+                   android:layout_gravity="center_horizontal|bottom"
+                   android:layout_marginTop="20dp"
+                   />
+           </FrameLayout>
+
+
+
+       </LinearLayout>
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_marginTop="30dp">
+
+           <FrameLayout
+               android:layout_width="wrap_content"
+               android:layout_height="120dp"
+               android:id="@+id/f_expenses"
+               android:layout_weight="1">
+
+               <ImageView
+                   android:layout_width="100dp"
+                   android:layout_height="100dp"
+
+                   android:src="@drawable/f_expenses"/>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Future Expenses"
+                   android:layout_gravity="center_horizontal|bottom"
+                   android:layout_marginTop="20dp"
+                   />
+           </FrameLayout>
+           <FrameLayout
+               android:layout_width="wrap_content"
+               android:layout_height="120dp"
+               android:id="@+id/limits"
+               android:layout_weight="1"
+               android:layout_marginLeft="70dp">
+
+               <ImageView
+                   android:layout_width="100dp"
+                   android:layout_height="100dp"
+                   android:src="@drawable/limits"/>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Limits"
+                   android:layout_gravity="center_horizontal|bottom"
+                   android:layout_marginTop="20dp"
+                   />
+           </FrameLayout>
+
+
+
+       </LinearLayout>
+
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="30dp"
+           android:orientation="horizontal">
+
+           <FrameLayout
+               android:layout_width="wrap_content"
+               android:layout_height="120dp"
+               android:id="@+id/categories"
+               android:layout_weight="1">
+
+               <ImageView
+                   android:layout_width="100dp"
+                   android:layout_height="100dp"
+                   android:src="@drawable/categories"/>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Categories"
+                   android:layout_gravity="center_horizontal|bottom"
+                   android:layout_marginTop="20dp"
+                   />
+           </FrameLayout>
+           <FrameLayout
+               android:layout_width="wrap_content"
+               android:layout_height="120dp"
+               android:layout_weight="1"
+               android:id="@+id/reports"
+               android:layout_marginLeft="70dp">
+
+               <ImageView
+                   android:layout_width="100dp"
+                   android:layout_height="100dp"
+                   android:src="@drawable/reports"/>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Reports"
+                   android:layout_gravity="center_horizontal|bottom"
+                   android:layout_marginTop="20dp"
+                   />
+           </FrameLayout>
+
+
+
+       </LinearLayout>
+   </LinearLayout>
+</RelativeLayout>
+</RelativeLayout>
