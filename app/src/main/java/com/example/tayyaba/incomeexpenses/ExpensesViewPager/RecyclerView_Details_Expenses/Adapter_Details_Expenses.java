@@ -9,15 +9,17 @@ import android.widget.TextView;
 
 import com.example.tayyaba.incomeexpenses.R;
 
+import java.util.ArrayList;
+
 /**
  * Created by Tayyaba on 9/28/2016.
  */
 public class Adapter_Details_Expenses extends RecyclerView.Adapter<Adapter_Details_Expenses.ViewHolder> {
 
-private Details_DataModel_Expenses[] detailsData;
+private ArrayList<Details_DataModel_Expenses> detailsData = new ArrayList<>();
 
         Context context;
-public Adapter_Details_Expenses(Details_DataModel_Expenses[] detailsData) {
+public Adapter_Details_Expenses(ArrayList<Details_DataModel_Expenses> detailsData) {
         this.detailsData = detailsData;
         }
 
@@ -44,10 +46,10 @@ public void onBindViewHolder(ViewHolder viewHolder, int position) {
         // - get data from your itemsData at this position
         // - replace the contents of the view with that itemsData
 
-        viewHolder.description_details_exp.setText(detailsData[position].getDescription());
-        viewHolder.catName_details_exp.setText(detailsData[position].getCatName());
-    viewHolder.date_details_exp.setText(detailsData[position].getDate());
-    viewHolder.amount_details_exp.setText(detailsData[position].getAmount());
+        viewHolder.description_details_exp.setText(detailsData.get(position).getDescription());
+        viewHolder.catName_details_exp.setText(detailsData.get(position).getCatName());
+    viewHolder.date_details_exp.setText(detailsData.get(position).getDate());
+    viewHolder.amount_details_exp.setText(detailsData.get(position).getAmount());
 
 
         }
@@ -69,6 +71,6 @@ public static class ViewHolder extends RecyclerView.ViewHolder {
 
     @Override
     public int getItemCount() {
-        return detailsData.length;
+        return detailsData.size();
     }
 }

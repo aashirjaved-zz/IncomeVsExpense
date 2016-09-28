@@ -7,18 +7,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.tayyaba.incomeexpenses.ExpensesViewPager.RecyclerView_ByCategory_Expenses.ByCategory_DataModel_Exp;
 import com.example.tayyaba.incomeexpenses.R;
+
+import java.util.ArrayList;
 
 /**
  * Created by Tayyaba on 9/28/2016.
  */
 public class AdapterByDay_Expenses extends RecyclerView.Adapter<AdapterByDay_Expenses.ViewHolder> {
 
-    private ByDay_DataModel_Exp[] dayData;
+    private ArrayList<ByDay_DataModel_Exp> dayData = new ArrayList<>();
 
     Context context;
-    public AdapterByDay_Expenses(ByDay_DataModel_Exp[] dayData) {
+    public AdapterByDay_Expenses(ArrayList<ByDay_DataModel_Exp> dayData) {
         this.dayData = dayData;
     }
 
@@ -45,8 +46,8 @@ public class AdapterByDay_Expenses extends RecyclerView.Adapter<AdapterByDay_Exp
         // - get data from your itemsData at this position
         // - replace the contents of the view with that itemsData
 
-        viewHolder.day_Exp.setText(dayData[position].getDay());
-        viewHolder.dayAmount_Exp.setText(dayData[position].getAmount());
+        viewHolder.day_Exp.setText(dayData.get(position).getDay());
+        viewHolder.dayAmount_Exp.setText(dayData.get(position).getAmount());
 
 
     }
@@ -64,6 +65,6 @@ public class AdapterByDay_Expenses extends RecyclerView.Adapter<AdapterByDay_Exp
 
     @Override
     public int getItemCount() {
-        return dayData.length;
+        return dayData.size();
     }
 }

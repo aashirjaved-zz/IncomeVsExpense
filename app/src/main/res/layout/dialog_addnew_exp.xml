@@ -30,36 +30,36 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"/>
 
-            <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/spinner_cat_exp"
-                android:layout_marginTop="20dp"
+            <!--<Spinner-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/spinner_cat_exp"-->
+                <!--android:layout_marginTop="20dp"-->
 
-                android:prompt="@string/spinner_prompt"/>
+                <!--android:prompt="@string/spinner_prompt"/>-->
 
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:id="@+id/spinner_desc_exp"
-                android:prompt="@string/spinner_prompt"/>
-
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:id="@+id/spinner_accnt_exp"
-                android:prompt="@string/spinner_prompt"/>
+            <!--<Spinner-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:id="@+id/spinner_desc_exp"-->
+                <!--android:prompt="@string/spinner_prompt"/>-->
 
 
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:id="@+id/spinner_desc_exp"
-                android:prompt="@string/spinner_prompt"/>
+            <!--<Spinner-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:id="@+id/spinner_accnt_exp"-->
+                <!--android:prompt="@string/spinner_prompt"/>-->
+
+
+            <!--<Spinner-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:id="@+id/spinner_desc_exp"-->
+                <!--android:prompt="@string/spinner_prompt"/>-->
 
         </LinearLayout>
 

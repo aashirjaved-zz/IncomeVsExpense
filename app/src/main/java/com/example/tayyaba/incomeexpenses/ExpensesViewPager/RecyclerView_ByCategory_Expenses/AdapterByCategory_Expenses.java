@@ -9,21 +9,32 @@ import android.widget.TextView;
 
     import com.example.tayyaba.incomeexpenses.R;
 
+import java.util.ArrayList;
+
 /**
  * Created by Tayyaba on 9/27/2016.
  */
 public class AdapterByCategory_Expenses extends RecyclerView.Adapter<AdapterByCategory_Expenses.ViewHolder> {
 
-    private ByCategory_DataModel_Exp[] catData;
+    private ArrayList<ByCategory_DataModel_Exp>  catData =new ArrayList<>();
 
     Context context;
-    public AdapterByCategory_Expenses(ByCategory_DataModel_Exp[] catData) {
+    public AdapterByCategory_Expenses(ArrayList<ByCategory_DataModel_Exp> catData) {
       this.catData = catData;
       }
 
     public AdapterByCategory_Expenses(Context context)
     {
+
         this.context=context;
+catData.add(new ByCategory_DataModel_Exp("Hello ","Data"));
+catData.add(new ByCategory_DataModel_Exp("Hello ","Data"));
+catData.add(new ByCategory_DataModel_Exp("Hello ","Data"));
+catData.add(new ByCategory_DataModel_Exp("Hello ","Data"));
+catData.add(new ByCategory_DataModel_Exp("Hello ","Data"));
+catData.add(new ByCategory_DataModel_Exp("Hello ","Data"));
+catData.add(new ByCategory_DataModel_Exp("Hello ","Data"));
+
     }
 
 
@@ -44,8 +55,8 @@ public class AdapterByCategory_Expenses extends RecyclerView.Adapter<AdapterByCa
      // - get data from your itemsData at this position
       // - replace the contents of the view with that itemsData
 
-       viewHolder.catName_Exp.setText(catData[position].getCategoryName());
-      viewHolder.catAmount_Exp.setText(catData[position].getAmount());
+       viewHolder.catName_Exp.setText(catData.get(position).getCategoryName());
+      viewHolder.catAmount_Exp.setText(catData.get(position).getAmount());
 
 
         }
@@ -63,6 +74,6 @@ public class AdapterByCategory_Expenses extends RecyclerView.Adapter<AdapterByCa
 
     @Override
    public int getItemCount() {
-        return catData.length;
+        return catData.size();
        }
 }
