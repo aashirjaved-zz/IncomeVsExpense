@@ -13,6 +13,7 @@ import com.example.tayyaba.incomeexpenses.Activities.FutureExpensesActivity;
 import com.example.tayyaba.incomeexpenses.Activities.IncomeActivity;
 import com.example.tayyaba.incomeexpenses.Activities.LimitsActivity;
 import com.example.tayyaba.incomeexpenses.Activities.ReportsActivity;
+import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddCategory.DatabaseHandler;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -30,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
 
         //Testing purpose
         //TODO integrate pup dialogue box to add category
-//        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-//        db.addCategory("TestCategory");
-//        db.addCategory("TestCategory1");
+        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+        db.addCategory("TestCategory");
+        db.addCategory("TestCategory1");
 
 
 

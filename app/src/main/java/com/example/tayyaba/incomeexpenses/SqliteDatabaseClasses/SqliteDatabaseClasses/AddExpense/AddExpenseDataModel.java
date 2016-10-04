@@ -10,12 +10,22 @@ public class AddExpenseDataModel {
     String description;
     String date;
     String image;
+    String category;
 
-    public AddExpenseDataModel( Integer amount, String description, String date, String image) {
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public AddExpenseDataModel(Integer amount, String description, String date, String image, String category) {
         this.id = id;
         this.amount = amount;
         this.description = description;
         this.date = date;
+        this.category = category;
         this.image = image;
     }
 

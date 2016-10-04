@@ -71,7 +71,9 @@ TextView pickDate;
     String descriptionSaved="";
     String stringDate = "";
     Date date ;
-
+    String totalamount = "";
+    Integer total = 0;
+    TextView totalAmounttoshow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +93,7 @@ TextView pickDate;
         });
 
 
-
+totalAmounttoshow = (TextView)findViewById(R.id.totalpaisa);
         final ViewPager viewPagerExpenses = (ViewPager) findViewById(R.id.viewpagerExpenses);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout_expenses);
         tabLayout.addTab(tabLayout.newTab().setText("By Category"));
@@ -119,6 +121,14 @@ TextView pickDate;
 
             }
         });
+      DatabaseHandlerExpense db = new DatabaseHandlerExpense(getApplicationContext());
+       ArrayList<AddExpenseDataModel> dataModels = db.getAllExpenses();
+        for(AddExpenseDataModel model : dataModels)
+        {
+            total = total+ model.getAmount();
+        }
+        totalamount = total.toString();totalAmounttoshow.setText(totalamount);
+
     }
 
 
@@ -170,16 +180,15 @@ TextView pickDate;
                         {
                             //TODO save date to database
 
-                            AddExpenseDataModel model = new AddExpenseDataModel(selectedAmount,descriptionSaved,stringDate,"image");
+                            AddExpenseDataModel model = new AddExpenseDataModel(selectedAmount,descriptionSaved,stringDate,"image",selectedCategory);
                             DatabaseHandlerExpense db  = new DatabaseHandlerExpense(getApplicationContext());
-                            db.addExpense(model,selectedCategory);
-                            Toast.makeText(mContext, "Added Successfuly", Toast.LENGTH_SHORT).show();
-
+                            db.addExpense(model);
+                            Toast.makeText(getApplicationContext(), "Added Successfuly", Toast.LENGTH_SHORT).show();
 
                         }
                         else
                         {
-                            Toast.makeText(mContext, "Important fields are empty", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Important fields are empty", Toast.LENGTH_SHORT).show();
 
                         }
 

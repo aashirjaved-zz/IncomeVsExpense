@@ -99,6 +99,7 @@
         android:textColor="@color/white"
         android:layout_marginLeft="20dp"/>
     <TextView
+        android:id="@+id/totalpaisa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"

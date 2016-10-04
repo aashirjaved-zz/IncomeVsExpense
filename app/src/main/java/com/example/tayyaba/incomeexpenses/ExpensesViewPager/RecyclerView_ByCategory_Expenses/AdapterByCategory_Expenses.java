@@ -2,6 +2,7 @@ package com.example.tayyaba.incomeexpenses.ExpensesViewPager.RecyclerView_ByCate
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,74 +19,100 @@ import java.util.ArrayList;
  */
 public class AdapterByCategory_Expenses extends RecyclerView.Adapter<AdapterByCategory_Expenses.ViewHolder> {
 
-    private ArrayList<ByCategory_DataModel_Exp>  catData =new ArrayList<>();
+    public static ArrayList<ByCategory_DataModel_Exp> catData = new ArrayList<>();
 
-    Context context;
+    public static Context context;
+    TextView total;
+
     public AdapterByCategory_Expenses(ArrayList<ByCategory_DataModel_Exp> catData) {
-      this.catData = catData;
-      }
+        this.catData = catData;
+    }
 
-    public AdapterByCategory_Expenses(Context context)
-    {
+    public AdapterByCategory_Expenses(Context context) {
 
-        this.context=context;
-
+        this.context = context;
 
 
-        DatabaseHandlerExpense db  = new DatabaseHandlerExpense(context);
-        ArrayList<AddExpenseDataModel> data = new ArrayList<>();
-        for(AddExpenseDataModel expense : data)
-        {
-            if(catData.contains(expense))
-            {
-                //do nothing
-            }
-            else
-            catData.add(new ByCategory_DataModel_Exp( expense.getDescription(),expense.getAmount().toString()));
+        updateExpenses();
 
-        }
 
-        catData.add(new ByCategory_DataModel_Exp("Hello ","Data"));
+//            for(AddExpenseDataModel expense : data1)
+//            {
+//                if(catData.contains(expense))
+//                {
+//                    //do nothing
+//                }
+//                else {
+//                    catData.add(new ByCategory_DataModel_Exp(expense.getDescription(), expense.getAmount().toString()));
+//                    catData.add(new ByCategory_DataModel_Exp("Hello ","Data"));
+//
+//                }
+//            }
+
 
     }
 
 
-@Override
-   public AdapterByCategory_Expenses.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    // create a new view
-    View itemLayoutView = LayoutInflater.from(parent.getContext())
-            .inflate(R.layout.item_bycategory_expenses, null);
+    @Override
+    public AdapterByCategory_Expenses.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        // create a new view
+        View itemLayoutView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_bycategory_expenses, null);
 
 
-    ViewHolder viewHolder = new ViewHolder(itemLayoutView);
-    return viewHolder;
-      }
+        ViewHolder viewHolder = new ViewHolder(itemLayoutView);
+        return viewHolder;
+    }
 
-          @Override
+    @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
 
-     // - get data from your itemsData at this position
-      // - replace the contents of the view with that itemsData
+        // - get data from your itemsData at this position
+        // - replace the contents of the view with that itemsData
 
-       viewHolder.catName_Exp.setText(catData.get(position).getCategoryName());
-      viewHolder.catAmount_Exp.setText(catData.get(position).getAmount());
+        viewHolder.catName_Exp.setText(catData.get(position).getCategoryName());
+        viewHolder.catAmount_Exp.setText(catData.get(position).getAmount());
 
+
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+
+        public TextView catName_Exp, catAmount_Exp;
+
+        public ViewHolder(View itemLayoutView) {
+            super(itemLayoutView);
+            catName_Exp = (TextView) itemLayoutView.findViewById(R.id.catName_exp);
+            catAmount_Exp = (TextView) itemLayoutView.findViewById(R.id.catAmount_exp);
 
         }
-
-          public static class ViewHolder extends RecyclerView.ViewHolder {
-
-              public TextView catName_Exp,catAmount_Exp;
-
-               public ViewHolder(View itemLayoutView) {
-                super(itemLayoutView);
-                     catName_Exp = (TextView) itemLayoutView.findViewById(R.id.catName_exp);
-           catAmount_Exp = (TextView) itemLayoutView.findViewById(R.id.catAmount_exp);}
-       }
+    }
 
 
     @Override
-   public int getItemCount() {
+    public int getItemCount() {
         return catData.size();
-       }
+    }
+
+    public void updateExpenses() {
+        catData.clear();
+
+        DatabaseHandlerExpense db = new DatabaseHandlerExpense(context);
+        ArrayList<AddExpenseDataModel> data1 = new ArrayList<>();
+        data1 = db.getAllExpenses();
+        Log.v("DatabaseItem", data1.get(0).getDescription().toString());
+        for (int i = 0; i < data1.size(); i++) {
+            if (catData.contains(data1.get(i))) {
+                //do nothing
+            } else {
+
+                catData.add(new ByCategory_DataModel_Exp(data1.get(i).getDescription(), data1.get(i).getAmount().toString()));
+                Log.v("ArraylistCat", String.valueOf(catData.size()));
+            }
+
+        }
+
+
+    }
+
 }
