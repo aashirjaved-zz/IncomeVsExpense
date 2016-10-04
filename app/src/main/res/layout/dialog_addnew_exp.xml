@@ -53,7 +53,7 @@
                     android:layout_alignEnd="@id/show_img_view_exp"
                     android:clickable="true"
                     app:fabSize="mini"
-                    android:src="@drawable/ic_plus_white_24dp"
+                    android:src="@drawable/ic_plus_white_36dp"
                     app:layout_anchor="@id/show_img_view_exp"
                     app:layout_anchorGravity="bottom|right|end"
                     android:layout_alignRight="@id/show_img_view_exp" />
@@ -126,6 +126,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"/>
             <EditText
+                android:id="@+id/descriptionAdd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Description"
@@ -161,13 +162,7 @@
                 android:background="@color/colorPrimary">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/ic_check_white_24dp"/>
-                <ImageView
+                    android:id="@+id/canceldialog"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
@@ -175,6 +170,18 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
                     android:src="@drawable/ic_close_white_24dp"/>
+
+                <ImageView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="14dp"
+                    android:src="@drawable/ic_check_white_24dp"
+                    android:layout_alignTop="@+id/canceldialog"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="14dp"
+                    android:id="@+id/saveDialogue" />
 
             </RelativeLayout>
 

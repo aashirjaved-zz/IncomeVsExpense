@@ -1,6 +1,5 @@
 package com.example.tayyaba.incomeexpenses.Activities;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -12,37 +11,33 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
-import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.util.Log;
-import android.util.TypedValue;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tayyaba.incomeexpenses.ExpensesViewPager.FragmentAdapterExp;
 import com.example.tayyaba.incomeexpenses.MainActivity;
 import com.example.tayyaba.incomeexpenses.R;
+import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddCategory.DatabaseHandler;
+import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddExpense.AddExpenseDataModel;
+import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddExpense.DatabaseHandlerExpense;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
@@ -54,9 +49,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
 
 
 public class ExpensesActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, DatePickerDialog.OnDateSetListener {
@@ -71,6 +65,12 @@ TextView pickDate;
     HashSet<Uri> mMedia = new HashSet<Uri>();
 
     private Context mContext;
+    String selectedCategory= "";
+    String selectedAccount="";
+    Integer selectedAmount=0;
+    String descriptionSaved="";
+    String stringDate = "";
+    Date date ;
 
 
     @Override
@@ -140,19 +140,58 @@ TextView pickDate;
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
                 MaterialSpinner spinnerCat=(MaterialSpinner)dialog.findViewById(R.id.spinner_cat_exp);
-                spinnerCat.setItems("Category 1", "Jelly Bean", "KitKat", "Lollipop", "Marshmallow");
+                ImageView saveData = (ImageView)dialog.findViewById(R.id.saveDialogue);
+                final EditText amount = (EditText) dialog.findViewById(R.id.amount_input_exp);
+                final EditText description = (EditText) dialog.findViewById(R.id.descriptionAdd);
+
+
+
+
+
+                DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                ArrayList<String> listofCategories =db.listofCategories();
+
+                spinnerCat.setItems(listofCategories);
+
                 spinnerCat.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
 
                     @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+                    selectedCategory = item;
                         Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_LONG).show();
                     }
                 });
 
+                saveData.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        selectedAmount = Integer.valueOf( amount.getText().toString());
+                        descriptionSaved = description.getText().toString();
+                        if(!selectedAccount.isEmpty() || !descriptionSaved.isEmpty() || selectedCategory.isEmpty())
+                        {
+                            //TODO save date to database
+
+                            AddExpenseDataModel model = new AddExpenseDataModel(selectedAmount,descriptionSaved,stringDate,"image");
+                            DatabaseHandlerExpense db  = new DatabaseHandlerExpense(getApplicationContext());
+                            db.addExpense(model,selectedCategory);
+                            Toast.makeText(mContext, "Added Successfuly", Toast.LENGTH_SHORT).show();
+
+
+                        }
+                        else
+                        {
+                            Toast.makeText(mContext, "Important fields are empty", Toast.LENGTH_SHORT).show();
+
+                        }
+
+                    }
+                });
+
                 MaterialSpinner spinnerAcc=(MaterialSpinner)dialog.findViewById(R.id.spinner_accnt_exp);
-                spinnerAcc.setItems("Account 1", "Jelly Bean", "KitKat", "Lollipop", "Marshmallow");
+                spinnerAcc.setItems("Account 1", "Account 2");
                 spinnerAcc.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
 
                     @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+                        selectedAccount = item;
                         Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_LONG).show();
                     }
                 });
@@ -169,10 +208,13 @@ TextView pickDate;
                                 now.get(Calendar.MONTH),
                                 now.get(Calendar.DAY_OF_MONTH)
                         );
+
                         dpd.show(getFragmentManager(), "Datepickerdialog");
 
                     }
                 });
+
+
 
                 fab=(FloatingActionButton)dialog.findViewById(R.id.choose_img_btn_exp);
                  showImage=(ImageView)dialog.findViewById(R.id.show_img_view_exp);
@@ -308,6 +350,8 @@ TextView pickDate;
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
 
         String string= dayOfMonth+ "-" + monthOfYear+ "-"+year;
+        stringDate = string;
+        date = new Date(year,monthOfYear,dayOfMonth);
         pickDate.setText(string);
 
     }

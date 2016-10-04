@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-    import com.example.tayyaba.incomeexpenses.R;
+import com.example.tayyaba.incomeexpenses.R;
+import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddExpense.AddExpenseDataModel;
+import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddExpense.DatabaseHandlerExpense;
 
 import java.util.ArrayList;
 
@@ -27,13 +29,23 @@ public class AdapterByCategory_Expenses extends RecyclerView.Adapter<AdapterByCa
     {
 
         this.context=context;
-catData.add(new ByCategory_DataModel_Exp("Hello ","Data"));
-catData.add(new ByCategory_DataModel_Exp("Hello ","Data"));
-catData.add(new ByCategory_DataModel_Exp("Hello ","Data"));
-catData.add(new ByCategory_DataModel_Exp("Hello ","Data"));
-catData.add(new ByCategory_DataModel_Exp("Hello ","Data"));
-catData.add(new ByCategory_DataModel_Exp("Hello ","Data"));
-catData.add(new ByCategory_DataModel_Exp("Hello ","Data"));
+
+
+
+        DatabaseHandlerExpense db  = new DatabaseHandlerExpense(context);
+        ArrayList<AddExpenseDataModel> data = new ArrayList<>();
+        for(AddExpenseDataModel expense : data)
+        {
+            if(catData.contains(expense))
+            {
+                //do nothing
+            }
+            else
+            catData.add(new ByCategory_DataModel_Exp( expense.getDescription(),expense.getAmount().toString()));
+
+        }
+
+        catData.add(new ByCategory_DataModel_Exp("Hello ","Data"));
 
     }
 
@@ -66,8 +78,8 @@ catData.add(new ByCategory_DataModel_Exp("Hello ","Data"));
               public TextView catName_Exp,catAmount_Exp;
 
                public ViewHolder(View itemLayoutView) {
-           super(itemLayoutView);
-           catName_Exp = (TextView) itemLayoutView.findViewById(R.id.catName_exp);
+                super(itemLayoutView);
+                     catName_Exp = (TextView) itemLayoutView.findViewById(R.id.catName_exp);
            catAmount_Exp = (TextView) itemLayoutView.findViewById(R.id.catAmount_exp);}
        }
 

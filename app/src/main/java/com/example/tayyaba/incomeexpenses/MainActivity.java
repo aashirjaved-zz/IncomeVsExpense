@@ -1,12 +1,8 @@
 package com.example.tayyaba.incomeexpenses;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -29,6 +25,19 @@ public class MainActivity extends AppCompatActivity {
         Toolbar customToolbar=(Toolbar)findViewById(R.id.toolbar_custom);
         setSupportActionBar(customToolbar);
        // customToolbar.setNavigationIcon(R.drawable.ic_arrow_right_white_24dp);
+
+
+
+        //Testing purpose
+        //TODO integrate pup dialogue box to add category
+//        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+//        db.addCategory("TestCategory");
+//        db.addCategory("TestCategory1");
+
+
+
+
+
 
 
         FrameLayout expenses=(FrameLayout)findViewById(R.id.expenses);
