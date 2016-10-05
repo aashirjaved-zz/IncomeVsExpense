@@ -61,6 +61,7 @@
                 android:layout_margin="10dp"
                 android:orientation="horizontal"
                 segmentedgroup:sc_border_width="2dp"
+                segmentedgroup:sc_tint_color="@color/colorPrimary"
                 segmentedgroup:sc_corner_radius="10dp">
 
                 <RadioButton
@@ -78,6 +79,36 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Variable Expense"
+                    style="@style/RadioButton" />
+            </info.hoang8f.android.segmented.SegmentedGroup>
+
+            <info.hoang8f.android.segmented.SegmentedGroup
+                xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/group2"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                segmentedgroup:sc_tint_color="@color/colorPrimary"
+                segmentedgroup:sc_border_width="2dp"
+                segmentedgroup:sc_corner_radius="10dp">
+
+                <RadioButton
+                    android:id="@+id/income"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Income"
+                    android:paddingRight="10dp"
+
+                    style="@style/RadioButton" />
+
+                <RadioButton
+                    android:id="@+id/expense"
+                    android:paddingRight="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Expenses"
                     style="@style/RadioButton" />
             </info.hoang8f.android.segmented.SegmentedGroup>
 
