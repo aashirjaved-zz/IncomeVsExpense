@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/tayyabataimur/expensesincome/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="/Users/tayyabataimur/expensesincome/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-24.2.1_cd02109356543e8c67ce596fe78604103582d11c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/tayyabataimur/expensesincome/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="/Users/tayyabataimur/expensesincome/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_81fad67a85c22a6c9b41ecd2d2ad78601fcb7e51/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/tayyabataimur/expensesincome/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="/Users/tayyabataimur/expensesincome/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_52fa07d6933057a8ab0d3aa24e3bef0dc6373b60/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/tayyabataimur/expensesincome/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="/Users/tayyabataimur/expensesincome/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_84f4cc4a66b436d7a2c53a1870ae675ee7eae3f4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/tayyabataimur/expensesincome/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="/Users/tayyabataimur/expensesincome/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-24.2.1_6be5a6075fd3fab4aff9ef5b4421d0b47a1316cd/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/tayyabataimur/expensesincome/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/Users/tayyabataimur/expensesincome/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-24.2.1_c2477bd3b9e770362f27e4dc5c3f186246496133/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/tayyabataimur/expensesincome/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/Users/tayyabataimur/expensesincome/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-24.2.1_556f8bc06be8f8f6ad1a3d39aeaefdd81d47efae/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/tayyabataimur/expensesincome/app/build/intermediates/exploded-aar/com.wdullaer/materialdatetimepicker/2.5.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="06e747980282ac9a96c036c43d07908d0f3347f6">
+        <dex dex="/Users/tayyabataimur/expensesincome/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.wdullaer-materialdatetimepicker-2.5.0_3e114fa141c44fef86161234460981f5d0484887/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/tayyabataimur/expensesincome/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="/Users/tayyabataimur/expensesincome/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-24.2.1_007cbf2564b97796c17fa537c6cc51b97ab07469/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/tayyabataimur/expensesincome/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="/Users/tayyabataimur/expensesincome/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-24.2.1_27ca2823a8cb6fd712bffe681ffda30230697f45/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/tayyabataimur/expensesincome/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="/Users/tayyabataimur/expensesincome/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-24.2.1_8dc933f14f491ee13f5055cd82d971e1c974a746/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/tayyabataimur/expensesincome/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="ddd73478ea7f258b9ab59576687672793108d6fe">
+        <dex dex="/Users/tayyabataimur/expensesincome/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_800c246fab69a9f0ee1b8f3f4bc480e2510a98ae/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/tayyabataimur/expensesincome/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="9a01e0673abeb8476fa428c9a98e2cf9aa7ecd06">
+        <dex dex="/Users/tayyabataimur/expensesincome/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_91feaa447663fdaf7e4f2a9bf685febff2d17a1b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/tayyabataimur/expensesincome/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/Users/tayyabataimur/expensesincome/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_77542df367f3ce6fb9609d2592e9f2043072dae8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/tayyabataimur/expensesincome/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="/Users/tayyabataimur/expensesincome/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-24.2.1_d115f1f1969e14ecbb7fc0a5e32db9633981d917/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/tayyabataimur/expensesincome/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/tayyabataimur/expensesincome/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-24.2.1_b514fc7c6e6c450ccd528fe2ab71c5caa3cd28e2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/tayyabataimur/expensesincome/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/Users/tayyabataimur/expensesincome/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_b5c235dcfb356476d404e674d748f2be87dc0a37/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/tayyabataimur/expensesincome/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="/Users/tayyabataimur/expensesincome/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-24.2.1_61ec3235aaef3db9c58f1d6b21ade62603d2c119/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/tayyabataimur/expensesincome/app/build/intermediates/exploded-aar/com.astuetz/pagerslidingtabstrip/1.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="7912610ed96381c25c36d986eba422731b9641b6">
+        <dex dex="/Users/tayyabataimur/expensesincome/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.astuetz-pagerslidingtabstrip-1.0.1_7934439302edfbae2e2d0f4edcd8be86a463f121/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/tayyabataimur/expensesincome/app/build/intermediates/exploded-aar/com.jaredrummler/material-spinner/1.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="60182b96dcbd95dc33dd734bc81505d2b5ddc70e">
+        <dex dex="/Users/tayyabataimur/expensesincome/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.jaredrummler-material-spinner-1.1.0_7e83cb6cb7120e30d2af14d52ae8048dc2092dd3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/tayyabataimur/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="/Users/tayyabataimur/expensesincome/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.2.1_afca30029ef7834db40361d8e24166239f3f92a0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/tayyabataimur/expensesincome/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="/Users/tayyabataimur/expensesincome/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-24.2.1_d4112142952cec6c0e343e92d1d695d078de1045/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/tayyabataimur/expensesincome/app/build/intermediates/exploded-aar/info.hoang8f/android-segmented/1.0.6/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="692a913dff3246e0cc5369c2508f5970ecfeca01">
+        <dex dex="/Users/tayyabataimur/expensesincome/app/build/intermediates/transforms/dex/debug/folders/1000/10/info.hoang8f-android-segmented-1.0.6_fe344aebf67568be2e8d7e9cf188871bb8a5ff02/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/tayyabataimur/expensesincome/app/build/intermediates/exploded-aar/com.github.QuadFlask/colorpicker/0.0.12/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="32ac1a4e9c4ad1a58f45f31fbce5485efb688546">
+        <dex dex="/Users/tayyabataimur/expensesincome/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.github.QuadFlask-colorpicker-0.0.12_86fd60734207bec753e3c19e847b2aa63927bbf2/classes.dex" />
+    </item>
+
+</items>
