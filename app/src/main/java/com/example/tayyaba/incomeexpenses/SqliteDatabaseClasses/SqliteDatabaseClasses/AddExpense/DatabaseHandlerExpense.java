@@ -42,7 +42,7 @@ public class DatabaseHandlerExpense extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String CREATE_CATEGORY_TABLE = "CREATE TABLE " + TABLE_EXPENSE + "("
                 + KEY_ID + " INTEGER PRIMARY KEY,"+ KEY_Description + " TEXT," + KEY_AMOUNT + " Number,"
-                  + KEY_Date + " TEXT," + KEY_image + " TEXT,"  +  ")";
+                  + KEY_Date + " TEXT," + KEY_image + " TEXT"  +  ")";
         sqLiteDatabase.execSQL(CREATE_CATEGORY_TABLE);
         Log.v("Sqlite","Oncreate Called");
 
@@ -84,7 +84,7 @@ public class DatabaseHandlerExpense extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 AddExpenseDataModel expense = new AddExpenseDataModel();
-                expense.setAmount(   Integer.valueOf(cursor.getString(0))  );
+                expense.setAmount(   Integer.valueOf(cursor.getString(2))  );
                 expense.setDescription(cursor.getString(1));
                 expense.setCategory( cursor.getString(4));
                 // Adding contact to list

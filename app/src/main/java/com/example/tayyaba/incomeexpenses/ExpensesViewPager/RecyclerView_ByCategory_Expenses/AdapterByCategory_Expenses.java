@@ -100,18 +100,18 @@ public class AdapterByCategory_Expenses extends RecyclerView.Adapter<AdapterByCa
         DatabaseHandlerExpense db = new DatabaseHandlerExpense(context);
         ArrayList<AddExpenseDataModel> data1 = new ArrayList<>();
         data1 = db.getAllExpenses();
-        Log.v("DatabaseItem", data1.get(0).getDescription().toString());
-        for (int i = 0; i < data1.size(); i++) {
-            if (catData.contains(data1.get(i))) {
-                //do nothing
-            } else {
+//        Log.v("DatabaseItem", data1.get(0).getDescription().toString());
+        if(!data1.isEmpty()) {
+            for (int i = 0; i < data1.size(); i++) {
+                if (catData.contains(data1.get(i))) {
+                    //do nothing
+                } else {
+                    catData.add(new ByCategory_DataModel_Exp(data1.get(i).getDescription(), data1.get(i).getAmount().toString()));
+                    Log.v("ArraylistCat", String.valueOf(catData.size()));
+                }
 
-                catData.add(new ByCategory_DataModel_Exp(data1.get(i).getDescription(), data1.get(i).getAmount().toString()));
-                Log.v("ArraylistCat", String.valueOf(catData.size()));
             }
-
         }
-
 
     }
 

@@ -15,7 +15,6 @@ import com.example.tayyaba.incomeexpenses.MainActivity;
 import com.example.tayyaba.incomeexpenses.R;
 
 public class IncomeActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +57,6 @@ public class IncomeActivity extends AppCompatActivity {
             }
         });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

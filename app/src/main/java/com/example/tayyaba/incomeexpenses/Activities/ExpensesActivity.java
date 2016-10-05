@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -45,12 +46,15 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
+
+import au.com.bytecode.opencsv.CSVWriter;
 
 
 public class ExpensesActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, DatePickerDialog.OnDateSetListener {
@@ -91,6 +95,7 @@ TextView pickDate;
                 startActivity(intent);
             }
         });
+        exportDB();
 
 
 totalAmounttoshow = (TextView)findViewById(R.id.totalpaisa);
@@ -365,5 +370,37 @@ totalAmounttoshow = (TextView)findViewById(R.id.totalpaisa);
 
     }
 
+public void exportDB()
+{
+    File dbFile=getDatabasePath("expense.db");
+    DatabaseHandlerExpense  dbhelper = new DatabaseHandlerExpense(getApplicationContext());
+    File exportDir = new File(Environment.getExternalStorageDirectory(), "");
 
+    if (!exportDir.exists())
+    {
+        exportDir.mkdirs();
+    }
+    File file = new File(exportDir, "expenses.csv");
+
+    try
+    {
+        file.createNewFile();
+        CSVWriter csvWrite = new CSVWriter(new FileWriter(file));
+        SQLiteDatabase db = dbhelper.getReadableDatabase();
+        Cursor curCSV = db.rawQuery("SELECT * FROM expense",null);
+        csvWrite.writeNext(curCSV.getColumnNames());
+        while(curCSV.moveToNext())
+        {
+            //Which column you want to exprort
+            String arrStr[] ={curCSV.getString(0),curCSV.getString(1), curCSV.getString(2)};
+            csvWrite.writeNext(arrStr);
+        }
+        csvWrite.close();
+        curCSV.close();
+    }
+    catch(Exception sqlEx)
+    {
+        Log.e("MainActivity", sqlEx.getMessage(), sqlEx);
+    }
+}
 }
