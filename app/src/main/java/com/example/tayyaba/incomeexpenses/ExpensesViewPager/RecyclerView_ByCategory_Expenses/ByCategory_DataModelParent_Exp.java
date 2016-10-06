@@ -1,13 +1,12 @@
 package com.example.tayyaba.incomeexpenses.ExpensesViewPager.RecyclerView_ByCategory_Expenses;
 
-import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
 
 import java.util.List;
 
 /**
  * Created by Tayyaba on 9/27/2016.
  */
-public class ByCategory_DataModelParent_Exp implements ParentObject {
+public class ByCategory_DataModelParent_Exp  {
 
     private String categoryName,amount;
     private List<Object> mChildrenList;
@@ -40,15 +39,5 @@ public class ByCategory_DataModelParent_Exp implements ParentObject {
         this.categoryName = categoryName;
     }
 
-    @Override
-    public List<Object> getChildObjectList() {
-        return mChildrenList;
-    }
 
-    @Override
-    public void setChildObjectList(List<Object> list) {
-        mChildrenList = list;
-
-
-    }
 }

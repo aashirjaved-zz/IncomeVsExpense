@@ -60,7 +60,9 @@ public class Fragment_ByCategoryExp extends Fragment {
 
 
         showData(view);
+        //TODO
 
+        //CAT RECYCLERVIEW
 
 
 
@@ -69,14 +71,11 @@ public class Fragment_ByCategoryExp extends Fragment {
 //        recyclerViewCat_exp.setAdapter(adapter_ByCategory_expenses);
 
 
+        //DIALOG RECYCLERVIEW
 
         return view;
     }
 
-    private  ArrayList<ParentObject> generateCetogeries()
-    {
-        DatabaseHandler db = new DatabaseHandler(getContext());
-        ArrayList<CategoryDataModel> categoryDataModels = db.listofCategories();
 
         DatabaseHandlerExpense db1 = new DatabaseHandlerExpense(getContext());
         ArrayList<AddExpenseDataModel> allExpenses = db1.getAllExpenses();
