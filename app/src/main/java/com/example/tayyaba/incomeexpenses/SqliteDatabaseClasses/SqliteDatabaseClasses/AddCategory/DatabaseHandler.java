@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -48,7 +49,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
      public void addCategory(CategoryDataModel model) {
         SQLiteDatabase db = this.getWritableDatabase();
-
+Log.v("SavingDatabase",model.getCategoryName()+"-"+model.getCategoryValue());
         ContentValues values = new ContentValues();
         values.put(KEY_Categoryname, model.getCategoryName()); // Category Name
         values.put(KEY_Categorvalue, model.getCategoryValue()); // Category Name
@@ -74,10 +75,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
-                CategoryDataModel model = new CategoryDataModel(cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getInt(5));
+                CategoryDataModel model = new CategoryDataModel(cursor.getString(1),cursor.getString(5),cursor.getString(3),cursor.getString(4),cursor.getInt(5));
 
                 // Adding contact to list
                 listofCategories.add(model);
+
             } while (cursor.moveToNext());
         }
 

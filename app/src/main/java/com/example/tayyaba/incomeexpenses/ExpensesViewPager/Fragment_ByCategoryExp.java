@@ -2,6 +2,7 @@ package com.example.tayyaba.incomeexpenses.ExpensesViewPager;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
-import com.example.tayyaba.incomeexpenses.ExpensesViewPager.RecyclerView_ByCategory_Expenses.Adapter;
 import com.example.tayyaba.incomeexpenses.ExpensesViewPager.RecyclerView_ByCategory_Expenses.AdapterByCategory_Expenses;
 import com.example.tayyaba.incomeexpenses.ExpensesViewPager.RecyclerView_ByCategory_Expenses.ByCategory_DataModelParent_Exp;
 import com.example.tayyaba.incomeexpenses.R;
@@ -20,6 +20,8 @@ import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseCl
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.tayyaba.incomeexpenses.ExpensesViewPager.RecyclerView_ByCategory_Expenses.AdapterByCategory_Expenses.catData;
 
 /**
  * Created by Tayyaba on 9/25/2016.
@@ -55,20 +57,14 @@ public class Fragment_ByCategoryExp extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_bycategory_exp, container, false);
 
-        recyclerViewCat_exp = (RecyclerView)view.findViewById(R.id.recyclerView_byCat_Expenses);
+
+
+        showData(view);
 
 
 
 
-        Adapter adapterCategory = new Adapter(getContext(),generateCetogeries());
 
-        adapterCategory.setCustomParentAnimationViewId(R.id.parent_list_item_expand_arrow);
-        adapterCategory.setParentClickableViewAnimationDefaultDuration();
-        adapterCategory.setParentAndIconExpandOnClick(true);
-
-
-        recyclerViewCat_exp.setAdapter(adapterCategory);
-        adapterCategory.notifyDataSetChanged();
 //        AdapterByCategory_Expenses adapter_ByCategory_expenses =new AdapterByCategory_Expenses(getActivity());
 //        recyclerViewCat_exp.setAdapter(adapter_ByCategory_expenses);
 
@@ -108,6 +104,50 @@ public class Fragment_ByCategoryExp extends Fragment {
         }
         Log.v("RecycleviewData",parentObjects.toArray().toString());
         return parentObjects;
+    }
+    public void showData(View view)
+    {
+        recyclerViewCat_exp = (RecyclerView)view.findViewById(R.id.recyclerView_byCat_Expenses);
+        LinearLayoutManager llm = new LinearLayoutManager(getContext());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerViewCat_exp.setLayoutManager(llm);
+        AdapterByCategory_Expenses adapterByCategory_expenses = new AdapterByCategory_Expenses(getContext());
+        recyclerViewCat_exp.setAdapter(adapterByCategory_expenses);
+        catData.clear();
+        DatabaseHandler db = new DatabaseHandler(getContext());
+        ArrayList<CategoryDataModel> categoryDataModels = db.listofCategories();
+
+        DatabaseHandlerExpense db1 = new DatabaseHandlerExpense(getContext());
+        ArrayList<AddExpenseDataModel> expenseDataModels = db1.getAllExpenses();
+        Integer totalamount =0;
+        for(CategoryDataModel model: categoryDataModels)
+        {
+
+            for(AddExpenseDataModel expenseData : expenseDataModels)
+            {
+                if(model.getCategoryName().contains(expenseData.getCategory()))
+                {
+                    totalamount = totalamount+expenseData.getAmount();
+
+
+                }
+
+
+
+            }
+            if(totalamount.equals(0))
+            {            catData.add(new CategoryDataModel(model.getCategoryName(),model.getCategoryValue(),model.getCategoryType(),model.getCategoryNature(),model.getCategoryColor()));
+
+
+            }
+            else {
+                catData.add(new CategoryDataModel(model.getCategoryName(), String.valueOf(totalamount), model.getCategoryType(), model.getCategoryNature(), model.getCategoryColor()));
+                totalamount=0;
+            }
+            adapterByCategory_expenses.notifyDataSetChanged();
+        }
+
+
     }
 
 }

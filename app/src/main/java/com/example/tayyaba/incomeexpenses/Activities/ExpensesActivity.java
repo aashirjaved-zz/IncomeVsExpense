@@ -60,7 +60,7 @@ import au.com.bytecode.opencsv.CSVWriter;
 
 public class ExpensesActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, DatePickerDialog.OnDateSetListener {
     public static String encodedimage;
-TextView pickDate;
+    TextView pickDate;
     ImageView showImage;
     FloatingActionButton fab;
     private static final String TAG = ExpensesActivity.class.getSimpleName();
@@ -70,12 +70,12 @@ TextView pickDate;
     HashSet<Uri> mMedia = new HashSet<Uri>();
 
     private Context mContext;
-    String selectedCategory= "";
-    String selectedAccount="";
-    Integer selectedAmount=0;
-    String descriptionSaved="";
+    String selectedCategory = "";
+    String selectedAccount = "";
+    Integer selectedAmount = 0;
+    String descriptionSaved = "";
     String stringDate = "";
-    Date date ;
+    Date date;
     String totalamount = "";
     Integer total = 0;
     TextView totalAmounttoshow;
@@ -86,21 +86,20 @@ TextView pickDate;
         setContentView(R.layout.activity_expenses);
 
 
-        Toolbar expToolbar=(Toolbar)findViewById(R.id.toolbar_exp);
+        Toolbar expToolbar = (Toolbar) findViewById(R.id.toolbar_exp);
         setSupportActionBar(expToolbar);
         expToolbar.setNavigationIcon(R.drawable.ic_arrow_right_white_24dp);
         expToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(ExpensesActivity.this,MainActivity.class);
+                Intent intent = new Intent(ExpensesActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
         //exportDB();
 
 
-
-        totalAmounttoshow = (TextView)findViewById(R.id.totalpaisa);
+        totalAmounttoshow = (TextView) findViewById(R.id.totalpaisa);
         final ViewPager viewPagerExpenses = (ViewPager) findViewById(R.id.viewpagerExpenses);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout_expenses);
         tabLayout.addTab(tabLayout.newTab().setText("By Category"));
@@ -128,11 +127,10 @@ TextView pickDate;
 
             }
         });
-      DatabaseHandlerExpense db = new DatabaseHandlerExpense(getApplicationContext());
-       ArrayList<AddExpenseDataModel> dataModels = db.getAllExpenses();
-        for(AddExpenseDataModel model : dataModels)
-        {
-            total = total+ model.getAmount();
+        DatabaseHandlerExpense db = new DatabaseHandlerExpense(getApplicationContext());
+        ArrayList<AddExpenseDataModel> dataModels = db.getAllExpenses();
+        for (AddExpenseDataModel model : dataModels) {
+            total = total + model.getAmount();
         }
         totalamount = total.toString();
         totalAmounttoshow.setText(totalamount);
@@ -147,37 +145,37 @@ TextView pickDate;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        switch (item.getItemId())
-        {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case R.id.add:
                 final Dialog dialog = new Dialog(this);
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.setContentView(R.layout.dialog_addnew_exp);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-                MaterialSpinner spinnerCat=(MaterialSpinner)dialog.findViewById(R.id.spinner_cat_exp);
-                ImageView saveData = (ImageView)dialog.findViewById(R.id.saveDialogue);
+                MaterialSpinner spinnerCat = (MaterialSpinner) dialog.findViewById(R.id.spinner_cat_exp);
+                ImageView saveData = (ImageView) dialog.findViewById(R.id.saveDialogue);
                 final EditText amount = (EditText) dialog.findViewById(R.id.amount_input_exp);
                 final EditText description = (EditText) dialog.findViewById(R.id.descriptionAdd);
 
 
-
-
-
                 DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-                ArrayList<CategoryDataModel> listofCategories =db.listofCategories();
-                for(CategoryDataModel model : listofCategories)
-                    spinnerCat.setItems(model.getCategoryName());
+                ArrayList<CategoryDataModel> listofCategories = db.listofCategories();
+                ArrayList<String> listofcat = new ArrayList<>();
 
-                selectedCategory=listofCategories.get(0).getCategoryName();
-                Log.v("Spinner Value",spinnerCat.getItems().get(0).toString());
+                for (CategoryDataModel model : listofCategories) {
+                    listofcat.add(model.getCategoryName());
+                }
+                spinnerCat.setItems(listofcat);
+
+                selectedCategory = listofCategories.get(0).getCategoryName();
+                Log.v("Spinner Value", spinnerCat.getItems().get(0).toString());
 
                 spinnerCat.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
 
-                    @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
-                    selectedCategory = item;
+                    @Override
+                    public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+                        selectedCategory = item;
                         Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_LONG).show();
                     }
                 });
@@ -185,20 +183,17 @@ TextView pickDate;
                 saveData.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        selectedAmount = Integer.valueOf( amount.getText().toString());
+                        selectedAmount = Integer.valueOf(amount.getText().toString());
                         descriptionSaved = description.getText().toString();
-                        if(!selectedAccount.isEmpty() || !descriptionSaved.isEmpty() || selectedCategory.isEmpty())
-                        {
+                        if (!selectedAccount.isEmpty() || !descriptionSaved.isEmpty() || selectedCategory.isEmpty()) {
                             //TODO save date to database
 
-                            AddExpenseDataModel model = new AddExpenseDataModel(selectedAmount,descriptionSaved,stringDate,"image",selectedCategory);
-                            DatabaseHandlerExpense db  = new DatabaseHandlerExpense(getApplicationContext());
+                            AddExpenseDataModel model = new AddExpenseDataModel(selectedAmount, descriptionSaved, stringDate, "image", selectedCategory);
+                            DatabaseHandlerExpense db = new DatabaseHandlerExpense(getApplicationContext());
                             db.addExpense(model);
                             Toast.makeText(getApplicationContext(), "Added Successfuly", Toast.LENGTH_SHORT).show();
 
-                        }
-                        else
-                        {
+                        } else {
                             Toast.makeText(getApplicationContext(), "Important fields are empty", Toast.LENGTH_SHORT).show();
 
                         }
@@ -206,18 +201,19 @@ TextView pickDate;
                     }
                 });
 
-                MaterialSpinner spinnerAcc=(MaterialSpinner)dialog.findViewById(R.id.spinner_accnt_exp);
+                MaterialSpinner spinnerAcc = (MaterialSpinner) dialog.findViewById(R.id.spinner_accnt_exp);
                 spinnerAcc.setItems("Account 1", "Account 2");
                 spinnerAcc.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
 
-                    @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+                    @Override
+                    public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
                         selectedAccount = item;
                         Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_LONG).show();
                     }
                 });
 
-                 pickDate=(TextView
-                         ) dialog.findViewById(R.id.pickDate);
+                pickDate = (TextView
+                        ) dialog.findViewById(R.id.pickDate);
                 pickDate.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -235,9 +231,8 @@ TextView pickDate;
                 });
 
 
-
-                fab=(FloatingActionButton)dialog.findViewById(R.id.choose_img_btn_exp);
-                 showImage=(ImageView)dialog.findViewById(R.id.show_img_view_exp);
+                fab = (FloatingActionButton) dialog.findViewById(R.id.choose_img_btn_exp);
+                showImage = (ImageView) dialog.findViewById(R.id.show_img_view_exp);
                 fab.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -269,14 +264,13 @@ TextView pickDate;
                 });
 
 
-
-
                 dialog.show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -298,7 +292,7 @@ TextView pickDate;
 
                     showImage.setImageBitmap(bitmap);
 
-                 //   encodedimage = BitMapToString(bitmap).replace("\\s", "");
+                    //   encodedimage = BitMapToString(bitmap).replace("\\s", "");
 
                     Log.v("EncodedImage", encodedimage);
                     String path = android.os.Environment
@@ -335,7 +329,7 @@ TextView pickDate;
                 Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
                 Log.w("path of image from gall", picturePath + "");
                 showImage.setImageBitmap(thumbnail);
-               // encodedimage = BitMapToString(thumbnail).replace("\\s", "");
+                // encodedimage = BitMapToString(thumbnail).replace("\\s", "");
             }
         }
     }
@@ -351,13 +345,14 @@ TextView pickDate;
         String temp = Base64.encodeToString(b, Base64.DEFAULT);
         return temp;
     }
+
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         // On selecting a spinner item
-       // String item = adapterView.getItemAtPosition(i).toString();
+        // String item = adapterView.getItemAtPosition(i).toString();
 
         // Showing selected spinner item
-      //  Toast.makeText(adapterView.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+        //  Toast.makeText(adapterView.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
 
     }
 
@@ -369,46 +364,40 @@ TextView pickDate;
     @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
 
-        String string= dayOfMonth+ "-" + monthOfYear+ "-"+year;
+        String string = dayOfMonth + "-" + monthOfYear + "-" + year;
         stringDate = string;
-        date = new Date(year,monthOfYear,dayOfMonth);
+        date = new Date(year, monthOfYear, dayOfMonth);
         pickDate.setText(string);
 
     }
 
-public void exportDB()
-{
-    File dbFile=getDatabasePath("expense.db");
-    DatabaseHandlerExpense  dbhelper = new DatabaseHandlerExpense(getApplicationContext());
-    File exportDir = new File(Environment.getExternalStorageDirectory(), "");
+    public void exportDB() {
+        File dbFile = getDatabasePath("expense.db");
+        DatabaseHandlerExpense dbhelper = new DatabaseHandlerExpense(getApplicationContext());
+        File exportDir = new File(Environment.getExternalStorageDirectory(), "");
 
-    if (!exportDir.exists())
-    {
-        exportDir.mkdirs();
-    }
-    File file = new File(exportDir, "expenses.csv");
-
-    try
-    {
-        file.createNewFile();
-        CSVWriter csvWrite = new CSVWriter(new FileWriter(file));
-        SQLiteDatabase db = dbhelper.getReadableDatabase();
-        Cursor curCSV = db.rawQuery("SELECT * FROM expense",null);
-        csvWrite.writeNext(curCSV.getColumnNames());
-        while(curCSV.moveToNext())
-        {
-            //Which column you want to exprort
-            String arrStr[] ={curCSV.getString(0),curCSV.getString(1), curCSV.getString(2)};
-            csvWrite.writeNext(arrStr);
+        if (!exportDir.exists()) {
+            exportDir.mkdirs();
         }
-        csvWrite.close();
-        curCSV.close();
+        File file = new File(exportDir, "expenses.csv");
+
+        try {
+            file.createNewFile();
+            CSVWriter csvWrite = new CSVWriter(new FileWriter(file));
+            SQLiteDatabase db = dbhelper.getReadableDatabase();
+            Cursor curCSV = db.rawQuery("SELECT * FROM expense", null);
+            csvWrite.writeNext(curCSV.getColumnNames());
+            while (curCSV.moveToNext()) {
+                //Which column you want to exprort
+                String arrStr[] = {curCSV.getString(0), curCSV.getString(1), curCSV.getString(2)};
+                csvWrite.writeNext(arrStr);
+            }
+            csvWrite.close();
+            curCSV.close();
+        } catch (Exception sqlEx) {
+            Log.e("MainActivity", sqlEx.getMessage(), sqlEx);
+        }
     }
-    catch(Exception sqlEx)
-    {
-        Log.e("MainActivity", sqlEx.getMessage(), sqlEx);
-    }
-}
 
 
 }
