@@ -7,10 +7,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
 import com.example.tayyaba.incomeexpenses.ExpensesViewPager.RecyclerView_ByCategory_Expenses.AdapterByCategory_Expenses;
-import com.example.tayyaba.incomeexpenses.ExpensesViewPager.RecyclerView_ByCategory_Expenses.ByCategory_DataModel_Exp;
+import com.example.tayyaba.incomeexpenses.ExpensesViewPager.RecyclerView_ByCategory_Expenses.ByCategory_DataModelParent_Exp;
 import com.example.tayyaba.incomeexpenses.R;
+import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +23,7 @@ import java.util.List;
  */
 public class Fragment_ByCategoryExp extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
-    private List<ByCategory_DataModel_Exp> catList = new ArrayList<>();
+    private List<ByCategory_DataModelParent_Exp> catList = new ArrayList<>();
 
     RecyclerView recyclerViewCat_exp;
     AdapterByCategory_Expenses adapter_ByCategory_expenses;
@@ -60,4 +63,5 @@ public class Fragment_ByCategoryExp extends Fragment {
 
         return view;
     }
+
 }

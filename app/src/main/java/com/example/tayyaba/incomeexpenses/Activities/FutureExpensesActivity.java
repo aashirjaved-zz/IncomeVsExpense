@@ -1,12 +1,16 @@
 package com.example.tayyaba.incomeexpenses.Activities;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 
 import com.example.tayyaba.incomeexpenses.MainActivity;
 import com.example.tayyaba.incomeexpenses.R;
@@ -39,8 +43,12 @@ public class FutureExpensesActivity extends AppCompatActivity {
     {
         switch (item.getItemId())
         {
-            case R.id.search:
-                //your code here
+            case R.id.add:
+                final Dialog dialog = new Dialog(this);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.dialog_addnew_exp);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
