@@ -1,7 +1,6 @@
 package com.example.tayyaba.incomeexpenses.ExpensesViewPager.RecyclerView_ByCategory_Expenses;
 
 import android.view.View;
-import android.widget.TextView;
 
 import com.bignerdranch.expandablerecyclerview.ViewHolder.ChildViewHolder;
 
@@ -15,7 +14,9 @@ public class ByCategory_DataModelChild_Exp extends ChildViewHolder {
 
     public ByCategory_DataModelChild_Exp(View itemView)
     {
+
         super(itemView);
+
     }
 
 

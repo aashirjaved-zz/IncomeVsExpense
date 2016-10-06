@@ -5,29 +5,32 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.ButtonBarLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.example.tayyaba.incomeexpenses.CategoriesViewPager.FragmentAdapterCat;
-import com.example.tayyaba.incomeexpenses.ExpensesViewPager.FragmentAdapterExp;
 import com.example.tayyaba.incomeexpenses.MainActivity;
 import com.example.tayyaba.incomeexpenses.R;
+import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddCategory.CategoryDataModel;
+import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddCategory.DatabaseHandler;
 import com.flask.colorpicker.ColorPickerView;
 import com.flask.colorpicker.OnColorSelectedListener;
 import com.flask.colorpicker.builder.ColorPickerClickListener;
 import com.flask.colorpicker.builder.ColorPickerDialogBuilder;
 
-import static com.example.tayyaba.incomeexpenses.ExpensesViewPager.RecyclerView_ByCategory_Expenses.AdapterByCategory_Expenses.context;
+import info.hoang8f.android.segmented.SegmentedGroup;
 
 public class CategoriesActivity extends AppCompatActivity {
 
@@ -91,7 +94,91 @@ public class CategoriesActivity extends AppCompatActivity {
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.setContentView(R.layout.dialog_add_category);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
                 final Button pickColor=(Button)dialog.findViewById(R.id.bg_clr_button);
+                final EditText categoryname= (EditText) dialog.findViewById(R.id.cat_name_addCat) ;
+                final EditText categoryValue= (EditText) dialog.findViewById(R.id.defaultVal_addCat) ;
+                SegmentedGroup categorynature= (SegmentedGroup) dialog.findViewById(R.id.segmented2) ;
+
+                final RadioButton constantExpense = (RadioButton) dialog.findViewById(R.id.button21) ;
+                RadioButton variableExpense= (RadioButton) dialog.findViewById(R.id.button22) ;
+                final RadioButton income= (RadioButton) dialog.findViewById(R.id.income) ;
+
+                final RadioButton expense = (RadioButton) dialog.findViewById(R.id.expense) ;
+                final Integer[] color = {R.color.colorPrimary};
+
+                final String[] type = new String[1];
+                final String[] nature = {"variable"};
+
+                ImageView save = (ImageView) dialog.findViewById(R.id.saveDialogue);
+                income.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        type[0] = "income";
+                    }
+                });
+                expense.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        type[0] = "expense";
+                    }
+                });
+                constantExpense.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        nature[0] = "constant";
+                    }
+                });
+                variableExpense.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        nature[0] = "variable";
+                    }
+                });
+
+                save.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (categoryname.getText().toString().isEmpty() || categoryValue.getText().toString().isEmpty()) {
+                            Toast.makeText(CategoriesActivity.this, "Please enter category name", Toast.LENGTH_SHORT).show();
+                        } else {
+
+                            if(!type[0].isEmpty())
+                            {
+                                //do nothing
+                            }
+                            else
+                            {
+                                Toast.makeText(getApplicationContext(), "Select category type", Toast.LENGTH_SHORT).show();
+                                return;
+
+                            }
+
+                            if(!nature[0].isEmpty())
+                            {
+                               //do nothing
+                            }
+                            else
+                            {
+                                nature[0] = "constant";
+                            }
+                            CategoryDataModel model = new CategoryDataModel(categoryname.getText().toString(),
+                                    categoryValue.getText().toString(), type[0], nature[0],color[0]
+
+
+                                    );
+
+                            DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+                            db.addCategory(model);
+                            Toast.makeText(getApplicationContext(),"Category added Successfuly",Toast.LENGTH_LONG).show();
+
+
+                        }
+                    }
+                });
+
+
+
                 pickColor.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -110,6 +197,7 @@ public class CategoriesActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new ColorPickerClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int selectedColor, Integer[] allColors) {
+                                        color[0] = selectedColor;
                                         pickColor.setBackgroundColor(selectedColor);
                                     }
                                 })

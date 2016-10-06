@@ -31,9 +31,6 @@ public class MainActivity extends AppCompatActivity {
 
         //Testing purpose
         //TODO integrate pup dialogue box to add category
-        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-        db.addCategory("TestCategory");
-        db.addCategory("TestCategory1");
 
 
 

@@ -2,18 +2,21 @@ package com.example.tayyaba.incomeexpenses.ExpensesViewPager;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
+import com.example.tayyaba.incomeexpenses.ExpensesViewPager.RecyclerView_ByCategory_Expenses.Adapter;
 import com.example.tayyaba.incomeexpenses.ExpensesViewPager.RecyclerView_ByCategory_Expenses.AdapterByCategory_Expenses;
 import com.example.tayyaba.incomeexpenses.ExpensesViewPager.RecyclerView_ByCategory_Expenses.ByCategory_DataModelParent_Exp;
 import com.example.tayyaba.incomeexpenses.R;
-import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup;
+import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddCategory.CategoryDataModel;
+import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddCategory.DatabaseHandler;
+import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddExpense.AddExpenseDataModel;
+import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddExpense.DatabaseHandlerExpense;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,13 +58,56 @@ public class Fragment_ByCategoryExp extends Fragment {
         recyclerViewCat_exp = (RecyclerView)view.findViewById(R.id.recyclerView_byCat_Expenses);
 
 
-        recyclerViewCat_exp.setLayoutManager(new LinearLayoutManager(getActivity()));
-        AdapterByCategory_Expenses adapter_ByCategory_expenses =new AdapterByCategory_Expenses(getActivity());
-        recyclerViewCat_exp.setAdapter(adapter_ByCategory_expenses);
+
+
+        Adapter adapterCategory = new Adapter(getContext(),generateCetogeries());
+
+        adapterCategory.setCustomParentAnimationViewId(R.id.parent_list_item_expand_arrow);
+        adapterCategory.setParentClickableViewAnimationDefaultDuration();
+        adapterCategory.setParentAndIconExpandOnClick(true);
+
+
+        recyclerViewCat_exp.setAdapter(adapterCategory);
+        adapterCategory.notifyDataSetChanged();
+//        AdapterByCategory_Expenses adapter_ByCategory_expenses =new AdapterByCategory_Expenses(getActivity());
+//        recyclerViewCat_exp.setAdapter(adapter_ByCategory_expenses);
 
 
 
         return view;
+    }
+
+    private  ArrayList<ParentObject> generateCetogeries()
+    {
+        DatabaseHandler db = new DatabaseHandler(getContext());
+        ArrayList<CategoryDataModel> categoryDataModels = db.listofCategories();
+
+        DatabaseHandlerExpense db1 = new DatabaseHandlerExpense(getContext());
+        ArrayList<AddExpenseDataModel> allExpenses = db1.getAllExpenses();
+        ArrayList<ParentObject> parentObjects = new ArrayList<>();
+        ArrayList<ByCategory_DataModelParent_Exp> expandableList = new ArrayList<>();
+        for(CategoryDataModel categoryDataModel : categoryDataModels)
+        {
+            expandableList.add( new ByCategory_DataModelParent_Exp(categoryDataModel.getCategoryName().toString(),categoryDataModel.getCategoryValue().toString()));
+        }
+
+        for(ByCategory_DataModelParent_Exp model : expandableList)
+        {
+            for(AddExpenseDataModel model1 : allExpenses)
+            {
+                if(model1.getCategory().contains(model.getCategoryName()) )
+                {
+                    ArrayList<Object> childlist = new ArrayList<>();
+                    childlist.add(new AddExpenseDataModel(model1.getAmount(),model1.getDescription()));
+                    model.setChildObjectList(childlist);
+                    parentObjects.add(model);
+
+                }
+            }
+
+        }
+        Log.v("RecycleviewData",parentObjects.toArray().toString());
+        return parentObjects;
     }
 
 }

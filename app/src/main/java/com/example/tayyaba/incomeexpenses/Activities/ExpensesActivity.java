@@ -36,6 +36,7 @@ import android.widget.Toast;
 import com.example.tayyaba.incomeexpenses.ExpensesViewPager.FragmentAdapterExp;
 import com.example.tayyaba.incomeexpenses.MainActivity;
 import com.example.tayyaba.incomeexpenses.R;
+import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddCategory.CategoryDataModel;
 import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddCategory.DatabaseHandler;
 import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddExpense.AddExpenseDataModel;
 import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddExpense.DatabaseHandlerExpense;
@@ -95,10 +96,11 @@ TextView pickDate;
                 startActivity(intent);
             }
         });
-        exportDB();
+        //exportDB();
 
 
-totalAmounttoshow = (TextView)findViewById(R.id.totalpaisa);
+
+        totalAmounttoshow = (TextView)findViewById(R.id.totalpaisa);
         final ViewPager viewPagerExpenses = (ViewPager) findViewById(R.id.viewpagerExpenses);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout_expenses);
         tabLayout.addTab(tabLayout.newTab().setText("By Category"));
@@ -132,7 +134,8 @@ totalAmounttoshow = (TextView)findViewById(R.id.totalpaisa);
         {
             total = total+ model.getAmount();
         }
-        totalamount = total.toString();totalAmounttoshow.setText(totalamount);
+        totalamount = total.toString();
+        totalAmounttoshow.setText(totalamount);
 
     }
 
@@ -164,9 +167,12 @@ totalAmounttoshow = (TextView)findViewById(R.id.totalpaisa);
 
 
                 DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-                ArrayList<String> listofCategories =db.listofCategories();
+                ArrayList<CategoryDataModel> listofCategories =db.listofCategories();
+                for(CategoryDataModel model : listofCategories)
+                    spinnerCat.setItems(model.getCategoryName());
 
-                spinnerCat.setItems(listofCategories);
+                selectedCategory=listofCategories.get(0).getCategoryName();
+                Log.v("Spinner Value",spinnerCat.getItems().get(0).toString());
 
                 spinnerCat.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
 
@@ -403,4 +409,6 @@ public void exportDB()
         Log.e("MainActivity", sqlEx.getMessage(), sqlEx);
     }
 }
+
+
 }

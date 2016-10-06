@@ -2,13 +2,13 @@ package com.example.tayyaba.incomeexpenses.ExpensesViewPager.RecyclerView_ByCate
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.tayyaba.incomeexpenses.R;
+import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddCategory.CategoryDataModel;
 import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddExpense.AddExpenseDataModel;
 import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddExpense.DatabaseHandlerExpense;
 
@@ -19,12 +19,12 @@ import java.util.ArrayList;
  */
 public class AdapterByCategory_Expenses extends RecyclerView.Adapter<AdapterByCategory_Expenses.ViewHolder> {
 
-    public static ArrayList<ByCategory_DataModel_Exp> catData = new ArrayList<>();
+    public static ArrayList<CategoryDataModel> catData = new ArrayList<>();
 
     public static Context context;
     TextView total;
 
-    public AdapterByCategory_Expenses(ArrayList<ByCategory_DataModel_Exp> catData) {
+    public AdapterByCategory_Expenses(ArrayList<CategoryDataModel> catData) {
         this.catData = catData;
     }
 
@@ -33,7 +33,7 @@ public class AdapterByCategory_Expenses extends RecyclerView.Adapter<AdapterByCa
         this.context = context;
 
 
-        updateExpenses();
+//        updateExpenses();
 
 
 //            for(AddExpenseDataModel expense : data1)
@@ -57,7 +57,7 @@ public class AdapterByCategory_Expenses extends RecyclerView.Adapter<AdapterByCa
     public AdapterByCategory_Expenses.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
         View itemLayoutView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_bycategory_expenses, null);
+                .inflate(R.layout.item_parent_bycategory_expenses, null);
 
 
         ViewHolder viewHolder = new ViewHolder(itemLayoutView);
@@ -69,9 +69,10 @@ public class AdapterByCategory_Expenses extends RecyclerView.Adapter<AdapterByCa
 
         // - get data from your itemsData at this position
         // - replace the contents of the view with that itemsData
+//TODO replace them
 
         viewHolder.catName_Exp.setText(catData.get(position).getCategoryName());
-        viewHolder.catAmount_Exp.setText(catData.get(position).getAmount());
+        viewHolder.catAmount_Exp.setText(catData.get(position).getCategoryValue());
 
 
     }
@@ -106,8 +107,8 @@ public class AdapterByCategory_Expenses extends RecyclerView.Adapter<AdapterByCa
                 if (catData.contains(data1.get(i))) {
                     //do nothing
                 } else {
-                    catData.add(new ByCategory_DataModel_Exp(data1.get(i).getDescription(), data1.get(i).getAmount().toString()));
-                    Log.v("ArraylistCat", String.valueOf(catData.size()));
+//                    catData.add(new ByCategory_DataModel_Exp(data1.get(i).getDescription(), data1.get(i).getAmount().toString()));
+//                    Log.v("ArraylistCat", String.valueOf(catData.size()));
                 }
 
             }

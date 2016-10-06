@@ -27,13 +27,6 @@ public class Adapter extends ExpandableRecyclerAdapter<ViewHolderParent_ByCat_ex
 
     }
 
-    public Adapter(Context context, List<ParentObject> parentItemList, int customParentAnimationViewId) {
-        super(context, parentItemList, customParentAnimationViewId);
-    }
-
-    public Adapter(Context context, List<ParentObject> parentItemList, int customParentAnimationViewId, long animationDuration) {
-        super(context, parentItemList, customParentAnimationViewId, animationDuration);
-    }
 
     @Override
     public ViewHolderParent_ByCat_exp onCreateParentViewHolder(ViewGroup viewGroup) {
