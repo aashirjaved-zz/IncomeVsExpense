@@ -1,29 +1,28 @@
 package com.example.tayyaba.incomeexpenses.ExpensesViewPager.RecyclerView_ByCategory_Expenses;
 
-import android.view.View;
 
-import com.bignerdranch.expandablerecyclerview.ViewHolder.ChildViewHolder;
 
 /**
  * Created by tayyabataimur on 10/6/16.
  */
 
-public class ByCategory_DataModelChild_Exp extends ChildViewHolder {
+public class ByCategory_DataModelChild_Exp  {
 
-    private String date, description;
+    private String date, description,amount;
 
-    public ByCategory_DataModelChild_Exp(View itemView)
+    public ByCategory_DataModelChild_Exp()
     {
 
-        super(itemView);
+
 
     }
 
 
-    public ByCategory_DataModelChild_Exp(View itemView,String date,String description) {
-        super(itemView);
+    public ByCategory_DataModelChild_Exp(String date,String description, String amount) {
+
         this.date=date;
         this.description=description;
+        this.amount=amount;
     }
 
     public String getDescription() {
@@ -40,5 +39,13 @@ public class ByCategory_DataModelChild_Exp extends ChildViewHolder {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
     }
 }
