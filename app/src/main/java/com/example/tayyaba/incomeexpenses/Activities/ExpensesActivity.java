@@ -50,6 +50,7 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -96,6 +97,13 @@ public class ExpensesActivity extends AppCompatActivity implements AdapterView.O
                 startActivity(intent);
             }
         });
+
+        Calendar c = Calendar.getInstance();
+        System.out.println("Current time => " + c.getTime());
+
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+        String formattedDate = df.format(c.getTime());
+        stringDate = formattedDate;
         //exportDB();
 
 
@@ -111,6 +119,11 @@ public class ExpensesActivity extends AppCompatActivity implements AdapterView.O
                 (getSupportFragmentManager(), tabLayout.getTabCount());
         viewPagerExpenses.setAdapter(adapter);
         viewPagerExpenses.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+
+
+
+
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -134,6 +147,7 @@ public class ExpensesActivity extends AppCompatActivity implements AdapterView.O
         }
         totalamount = total.toString();
         totalAmounttoshow.setText(totalamount);
+
 
     }
 
@@ -179,6 +193,25 @@ public class ExpensesActivity extends AppCompatActivity implements AdapterView.O
                         Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_LONG).show();
                     }
                 });
+                pickDate = (TextView
+                        ) dialog.findViewById(R.id.pickDate);
+                pickDate.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Calendar now = Calendar.getInstance();
+                        DatePickerDialog dpd = DatePickerDialog.newInstance(
+                                ExpensesActivity.this,
+                                now.get(Calendar.YEAR),
+                                now.get(Calendar.MONTH),
+                                now.get(Calendar.DAY_OF_MONTH)
+                        );
+
+                        dpd.show(getFragmentManager(), "Datepickerdialog");
+
+                    }
+                });
+
+
 
                 saveData.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -209,24 +242,6 @@ public class ExpensesActivity extends AppCompatActivity implements AdapterView.O
                     public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
                         selectedAccount = item;
                         Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_LONG).show();
-                    }
-                });
-
-                pickDate = (TextView
-                        ) dialog.findViewById(R.id.pickDate);
-                pickDate.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Calendar now = Calendar.getInstance();
-                        DatePickerDialog dpd = DatePickerDialog.newInstance(
-                                ExpensesActivity.this,
-                                now.get(Calendar.YEAR),
-                                now.get(Calendar.MONTH),
-                                now.get(Calendar.DAY_OF_MONTH)
-                        );
-
-                        dpd.show(getFragmentManager(), "Datepickerdialog");
-
                     }
                 });
 

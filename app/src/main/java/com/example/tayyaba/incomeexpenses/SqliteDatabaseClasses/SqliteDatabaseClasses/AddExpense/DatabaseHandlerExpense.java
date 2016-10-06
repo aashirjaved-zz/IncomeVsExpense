@@ -87,6 +87,7 @@ public class DatabaseHandlerExpense extends SQLiteOpenHelper {
                 expense.setAmount(   Integer.valueOf(cursor.getString(2))  );
                 expense.setDescription(cursor.getString(1));
                 expense.setCategory( cursor.getString(4));
+                expense.setDate(cursor.getString(3));
                 // Adding contact to list
                 expenseList.add(expense);
             } while (cursor.moveToNext());

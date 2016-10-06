@@ -7,8 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.tayyaba.incomeexpenses.ExpensesViewPager.RecyclerView_ByDay_Expenses.AdapterByDay_Expenses;
-import com.example.tayyaba.incomeexpenses.ExpensesViewPager.RecyclerView_ByDay_Expenses.ByDay_DataModel_Exp;
 import com.example.tayyaba.incomeexpenses.R;
 
 import java.util.ArrayList;
@@ -19,7 +17,7 @@ import java.util.ArrayList;
 
 public class Adapter_Child_ByCat_Exp extends RecyclerView.Adapter<Adapter_Child_ByCat_Exp.ViewHolder> {
 
-    private ArrayList<ByCategory_DataModelChild_Exp> childData = new ArrayList<>();
+    public static ArrayList<ByCategory_DataModelChild_Exp> childData = new ArrayList<>();
 
     Context context;
     public Adapter_Child_ByCat_Exp(ArrayList<ByCategory_DataModelChild_Exp> childData) {

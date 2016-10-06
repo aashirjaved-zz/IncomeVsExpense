@@ -1,10 +1,16 @@
 package com.example.tayyaba.incomeexpenses.ExpensesViewPager.RecyclerView_ByCategory_Expenses;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.TextView;
 
 import com.example.tayyaba.incomeexpenses.R;
@@ -13,6 +19,8 @@ import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseCl
 import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddExpense.DatabaseHandlerExpense;
 
 import java.util.ArrayList;
+
+import static com.example.tayyaba.incomeexpenses.ExpensesViewPager.RecyclerView_ByCategory_Expenses.Adapter_Child_ByCat_Exp.childData;
 
 /**
  * Created by Tayyaba on 9/27/2016.
@@ -33,22 +41,6 @@ public class AdapterByCategory_Expenses extends RecyclerView.Adapter<AdapterByCa
         this.context = context;
 
 
-//        updateExpenses();
-
-
-//            for(AddExpenseDataModel expense : data1)
-//            {
-//                if(catData.contains(expense))
-//                {
-//                    //do nothing
-//                }
-//                else {
-//                    catData.add(new ByCategory_DataModel_Exp(expense.getDescription(), expense.getAmount().toString()));
-//                    catData.add(new ByCategory_DataModel_Exp("Hello ","Data"));
-//
-//                }
-//            }
-
 
     }
 
@@ -65,14 +57,61 @@ public class AdapterByCategory_Expenses extends RecyclerView.Adapter<AdapterByCa
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(ViewHolder viewHolder, final int position) {
 
         // - get data from your itemsData at this position
         // - replace the contents of the view with that itemsData
-//TODO replace them
+        //TODO replace them
+        Log.v("Sizeofdata",String.valueOf(getItemCount()));
+
+
 
         viewHolder.catName_Exp.setText(catData.get(position).getCategoryName());
         viewHolder.catAmount_Exp.setText(catData.get(position).getCategoryValue());
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Dialog dialog = new Dialog(context);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.dialog_child_bycat_exp);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                RecyclerView recyclerView_dialog=(RecyclerView)dialog.findViewById(R.id.recyclerView_dialog_byCat_exp);
+                Adapter_Child_ByCat_Exp adapter_dialog = new Adapter_Child_ByCat_Exp(context);
+                LinearLayoutManager llm = new LinearLayoutManager(context);
+                llm.setOrientation(LinearLayoutManager.VERTICAL);
+                recyclerView_dialog.setLayoutManager(llm );
+                recyclerView_dialog.setAdapter(adapter_dialog);
+                childData.clear();
+
+                DatabaseHandlerExpense db = new DatabaseHandlerExpense(context);
+                ArrayList<AddExpenseDataModel>  expenses = db.getAllExpenses();
+                for(AddExpenseDataModel expenseDataModel : expenses)
+                {
+                    if(expenseDataModel.getCategory().contains( catData.get(position).getCategoryName()))
+                    {
+                        Log.v("testingdialog","add data");
+                        childData.add(new ByCategory_DataModelChild_Exp(expenseDataModel.getDate(),expenseDataModel.getDescription(),expenseDataModel.getAmount().toString()));
+                        adapter_dialog.notifyDataSetChanged();
+                    }
+                    else
+                    {
+                        Log.v("testingdialog","clearlist");
+                        //childData.clear();
+                        //adapter_dialog.notifyDataSetChanged();
+                    }
+                }
+
+
+
+
+
+
+                dialog.show();
+
+            }
+        });
+
 
 
     }
