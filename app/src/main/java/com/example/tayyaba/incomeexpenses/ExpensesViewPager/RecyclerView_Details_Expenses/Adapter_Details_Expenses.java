@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class Adapter_Details_Expenses extends RecyclerView.Adapter<Adapter_Details_Expenses.ViewHolder> {
 
-private ArrayList<Details_DataModel_Expenses> detailsData = new ArrayList<>();
+public static ArrayList<Details_DataModel_Expenses> detailsData = new ArrayList<>();
 
         Context context;
 public Adapter_Details_Expenses(ArrayList<Details_DataModel_Expenses> detailsData) {

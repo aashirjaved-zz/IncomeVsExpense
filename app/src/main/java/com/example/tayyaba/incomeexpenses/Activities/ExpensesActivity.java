@@ -101,7 +101,7 @@ public class ExpensesActivity extends AppCompatActivity implements AdapterView.O
         Calendar c = Calendar.getInstance();
         System.out.println("Current time => " + c.getTime());
 
-        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         String formattedDate = df.format(c.getTime());
         stringDate = formattedDate;
         //exportDB();
