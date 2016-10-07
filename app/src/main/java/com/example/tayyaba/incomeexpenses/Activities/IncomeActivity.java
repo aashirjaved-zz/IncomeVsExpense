@@ -1,6 +1,9 @@
 package com.example.tayyaba.incomeexpenses.Activities;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -9,10 +12,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.example.tayyaba.incomeexpenses.IncomeViewPager.FragmentAdapterInc;
 import com.example.tayyaba.incomeexpenses.MainActivity;
 import com.example.tayyaba.incomeexpenses.R;
+import com.jaredrummler.materialspinner.MaterialSpinner;
 
 public class IncomeActivity extends AppCompatActivity {
     @Override
@@ -69,8 +76,20 @@ public class IncomeActivity extends AppCompatActivity {
     {
         switch (item.getItemId())
         {
-            case R.id.search:
-                //your code here
+            case R.id.add:
+                final Dialog dialog = new Dialog(this);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.dialog_addnew_exp);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                MaterialSpinner spinnerCat = (MaterialSpinner) dialog.findViewById(R.id.spinner_cat_exp);
+                ImageView saveData = (ImageView) dialog.findViewById(R.id.saveDialogue);
+                final EditText amount = (EditText) dialog.findViewById(R.id.amount_input_exp);
+                final EditText description = (EditText) dialog.findViewById(R.id.descriptionAdd);
+
+                //TODO
+                //expenses wala kaam yahan pe bhi sara except categories income wali uthaani han
+                dialog.show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
