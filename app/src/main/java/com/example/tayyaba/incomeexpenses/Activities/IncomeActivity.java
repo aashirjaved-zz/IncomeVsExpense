@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.tayyaba.incomeexpenses.IncomeViewPager.FragmentAdapterInc;
 import com.example.tayyaba.incomeexpenses.MainActivity;
@@ -81,6 +82,8 @@ public class IncomeActivity extends AppCompatActivity {
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.setContentView(R.layout.dialog_addnew_exp);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                TextView heading=(TextView)dialog.findViewById(R.id.heading_txt);
+                heading.setText("Add Income");
 
                 MaterialSpinner spinnerCat = (MaterialSpinner) dialog.findViewById(R.id.spinner_cat_exp);
                 ImageView saveData = (ImageView) dialog.findViewById(R.id.saveDialogue);

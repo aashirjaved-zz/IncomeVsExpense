@@ -38,7 +38,7 @@
                 >
 
                 <ImageView
-                    android:id="@+id/show_img_view_exp"
+                    android:id="@+id/show_img_view_fexp"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_centerHorizontal="true"
@@ -47,11 +47,11 @@
 
                     />
                 <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/choose_img_btn_exp"
+                    android:id="@+id/choose_img_btn_fexp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/show_img_view_exp"
-                    android:layout_alignEnd="@id/show_img_view_exp"
+                    android:layout_alignBottom="@+id/show_img_view_fexp"
+                    android:layout_alignEnd="@id/show_img_view_fexp"
                     android:clickable="true"
                     app:fabSize="mini"
                     android:src="@drawable/ic_plus_white_36dp"
@@ -90,7 +90,7 @@
                         app:ms_dropdown_height="wrap_content"
                         android:textSize="14sp"
                         app:ms_text_color="@color/colorPrimary"
-                        android:id="@+id/spinner_cat_exp"
+                        android:id="@+id/spinner_cat_fexp"
                         />
 
                 </LinearLayout>
@@ -110,24 +110,24 @@
                         app:ms_dropdown_height="wrap_content"
                         android:textSize="14sp"
                         app:ms_text_color="@color/colorPrimary"
-                        android:id="@+id/spinner_accnt_exp"
+                        android:id="@+id/spinner_accnt_fexp"
                         android:prompt="@string/spinner_prompt"/>
 
                 </LinearLayout>
             </RelativeLayout>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:id="@+id/amount_input_exp"
-            android:inputType="number"
-            android:hint="Amount"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"/>
             <EditText
-                android:id="@+id/descriptionAdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:id="@+id/amount_input_fexp"
+                android:inputType="number"
+                android:hint="Amount"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"/>
+            <EditText
+                android:id="@+id/descriptionAdd_fexp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Description"
@@ -135,6 +135,35 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="10dp"/>
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Every"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="20dp"/>
+               <com.jaredrummler.materialspinner.MaterialSpinner
+
+                   android:layout_width="58dp"
+                   android:layout_height="wrap_content"
+                   app:ms_dropdown_height="wrap_content"
+                   android:textSize="14sp"
+                   android:layout_marginTop="10dp"
+                   app:ms_text_color="@color/colorPrimary"
+                   android:id="@+id/spinner_every_fexp"
+                   />
+               </LinearLayout>
+
+
+
+
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -144,7 +173,7 @@
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="19dp"
                 android:layout_marginRight="24dp"
-                android:id="@+id/pickDate"/>
+                android:id="@+id/pickDate_fexp"/>
 
             <View
                 android:layout_width="match_parent"
@@ -163,7 +192,7 @@
                 android:background="@color/colorPrimary">
 
                 <ImageView
-                    android:id="@+id/canceldialog"
+                    android:id="@+id/canceldialog_fexp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
@@ -178,7 +207,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="14dp"
                     android:src="@drawable/ic_check_white_24dp"
-                    android:layout_alignTop="@+id/canceldialog"
+                    android:layout_alignTop="@+id/canceldialog_fexp"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="14dp"
