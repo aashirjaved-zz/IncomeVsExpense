@@ -30,11 +30,6 @@ dependencies {
     compile 'com.wdullaer:materialdatetimepicker:2.5.0'
     compile 'info.hoang8f:android-segmented:1.0.6'
     compile 'com.github.QuadFlask:colorpicker:0.0.12'
-
-
-
-
-
-
+    compile 'com.wdullaer:materialdatetimepicker:2.5.0'
 
 }
