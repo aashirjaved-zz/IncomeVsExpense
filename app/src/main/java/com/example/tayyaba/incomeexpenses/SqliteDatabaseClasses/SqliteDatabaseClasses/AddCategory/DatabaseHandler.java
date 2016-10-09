@@ -75,7 +75,7 @@ Log.v("SavingDatabase",model.getCategoryName()+"-"+model.getCategoryValue());
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
-                CategoryDataModel model = new CategoryDataModel(cursor.getString(1),cursor.getString(5),cursor.getString(3),cursor.getString(4),cursor.getInt(5));
+                CategoryDataModel model = new CategoryDataModel(cursor.getString(1),cursor.getString(5),cursor.getString(2),cursor.getString(3),cursor.getInt(4));
 
                 // Adding contact to list
                 listofCategories.add(model);

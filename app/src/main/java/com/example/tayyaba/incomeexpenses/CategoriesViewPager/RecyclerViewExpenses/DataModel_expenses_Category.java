@@ -1,7 +1,5 @@
 package com.example.tayyaba.incomeexpenses.CategoriesViewPager.RecyclerViewExpenses;
 
-import com.example.tayyaba.incomeexpenses.CategoriesViewPager.RecyclerViewIncome.DataModel_Income_Category;
-
 /**
  * Created by tayyabataimur on 10/7/16.
  */
@@ -14,7 +12,7 @@ public class DataModel_expenses_Category {
 
     }
 
-    DataModel_expenses_Category(String catName,String defValue,String type)
+    public DataModel_expenses_Category(String catName, String defValue, String type)
     {
         this.catName=catName;
         this.defValue=defValue;

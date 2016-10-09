@@ -64,7 +64,7 @@ public class DatabaseHandlerExpense extends SQLiteOpenHelper {
         values.put(KEY_Description, expense.getDescription());
         values.put(KEY_Date,expense.getDate());
         values.put(KEY_image,expense.getCategory());
-       // values.put(KEY_category,expense.getCategory());
+        //values.put(KEY_category,expense.getCategory());
         // Contact Phone
 
         // Inserting Row

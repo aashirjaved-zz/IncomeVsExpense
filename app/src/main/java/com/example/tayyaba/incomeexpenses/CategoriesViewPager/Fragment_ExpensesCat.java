@@ -9,8 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tayyaba.incomeexpenses.CategoriesViewPager.RecyclerViewExpenses.Adapter_Expenses_Category;
-import com.example.tayyaba.incomeexpenses.IncomeViewPager.Fragment_ByCategoryInc;
+import com.example.tayyaba.incomeexpenses.CategoriesViewPager.RecyclerViewExpenses.DataModel_expenses_Category;
 import com.example.tayyaba.incomeexpenses.R;
+import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddCategory.CategoryDataModel;
+import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddCategory.DatabaseHandler;
+
+import java.util.ArrayList;
+
+import static com.example.tayyaba.incomeexpenses.CategoriesViewPager.RecyclerViewExpenses.Adapter_Expenses_Category.expenseData;
+
 
 /**
  * Created by tayyabataimur on 10/5/16.
@@ -32,11 +39,28 @@ public class Fragment_ExpensesCat extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_expenses_category, container, false);
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView_expense_Category);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        Adapter_Expenses_Category adapter_expenses_category = new Adapter_Expenses_Category(getContext());
+        recyclerView.setAdapter(adapter_expenses_category);
+        DatabaseHandler db = new DatabaseHandler(getContext());
+        ArrayList<CategoryDataModel> listofcat =  db.listofCategories();
+        for( CategoryDataModel model: listofcat)
+        {
+            if(model.getCategoryType().toLowerCase().contains("expense"))
+            {
 
-        RecyclerView recyclerView_expense_cat=(RecyclerView)view.findViewById(R.id.recyclerView_expense_Category);
-        recyclerView_expense_cat.setLayoutManager(new LinearLayoutManager(getActivity()));
-        Adapter_Expenses_Category adapter_expenses_category=new Adapter_Expenses_Category(getActivity());
-        recyclerView_expense_cat.setAdapter(adapter_expenses_category);
+                expenseData.add(new DataModel_expenses_Category(model.getCategoryName(),model.getCategoryValue(),model.getCategoryType()));
+                adapter_expenses_category.notifyDataSetChanged();
+
+
+            }
+        }
+
+
+
+
+
         return view;
     }
 }

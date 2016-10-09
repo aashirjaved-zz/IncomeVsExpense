@@ -9,7 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tayyaba.incomeexpenses.CategoriesViewPager.RecyclerViewIncome.Adapter_Income_Category;
+import com.example.tayyaba.incomeexpenses.CategoriesViewPager.RecyclerViewIncome.DataModel_Income_Category;
 import com.example.tayyaba.incomeexpenses.R;
+import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddCategory.CategoryDataModel;
+import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddCategory.DatabaseHandler;
+
+import java.util.ArrayList;
+
+import static com.example.tayyaba.incomeexpenses.CategoriesViewPager.RecyclerViewIncome.Adapter_Income_Category.incomeData;
 
 /**
  * Created by tayyabataimur on 10/5/16.
@@ -30,11 +37,29 @@ public class Fragment_IncomeCat extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_income_category, container, false);
-LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getActivity());
-        RecyclerView recyclerView_income_cat=(RecyclerView)view.findViewById(R.id.recyclerView_income_Category);
-        Adapter_Income_Category adapter_income_category=new Adapter_Income_Category(getActivity());
-        recyclerView_income_cat.setLayoutManager(linearLayoutManager);
-        recyclerView_income_cat.setAdapter(adapter_income_category);
+
+
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView_income_Category);
+        Adapter_Income_Category adapter_income_category = new Adapter_Income_Category(getContext());
+        incomeData.clear();
+        recyclerView.setAdapter(adapter_income_category);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        DatabaseHandler db = new DatabaseHandler(getContext());
+        ArrayList<CategoryDataModel> listofcat =  db.listofCategories();
+        for( CategoryDataModel model: listofcat)
+        {
+            if(model.getCategoryType().toLowerCase().contains("income"))
+            {
+
+                incomeData.add(new DataModel_Income_Category(model.getCategoryName(),model.getCategoryValue()));
+                adapter_income_category.notifyDataSetChanged();
+
+
+            }
+        }
+
+
+
         return view;
     }
 }

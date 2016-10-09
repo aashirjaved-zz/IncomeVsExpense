@@ -34,6 +34,9 @@ import com.flask.colorpicker.builder.ColorPickerDialogBuilder;
 import info.hoang8f.android.segmented.SegmentedGroup;
 
 public class CategoriesActivity extends AppCompatActivity {
+    Integer colorSelected = R.color.colorAccent;
+    String type = "";
+    String nature = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,34 +109,39 @@ public class CategoriesActivity extends AppCompatActivity {
                 final RadioButton income= (RadioButton) dialog.findViewById(R.id.income) ;
 
                 final RadioButton expense = (RadioButton) dialog.findViewById(R.id.expense) ;
-                final Integer[] color = {R.color.colorPrimary};
 
-                final String[] type = new String[1];
-                final String[] nature = {"variable"};
 
                 ImageView save = (ImageView) dialog.findViewById(R.id.saveDialogue);
                 income.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        type[0] = "income";
+                        type = "income";
+                        Toast.makeText(getApplicationContext(),"Income selected",Toast.LENGTH_SHORT).show();
                     }
                 });
                 expense.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        type[0] = "expense";
+                        type = "expense";
+                        Toast.makeText(getApplicationContext(),"Income selected",Toast.LENGTH_SHORT).show();
+
                     }
                 });
                 constantExpense.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        nature[0] = "constant";
+                        nature = "constant";
+                        Toast.makeText(getApplicationContext(),"constant selected",Toast.LENGTH_SHORT).show();
+
+
                     }
                 });
                 variableExpense.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        nature[0] = "variable";
+                        nature = "variable";
+                        Toast.makeText(getApplicationContext(),"variable selected",Toast.LENGTH_SHORT).show();
+
                     }
                 });
 
@@ -144,8 +152,9 @@ public class CategoriesActivity extends AppCompatActivity {
                             Toast.makeText(CategoriesActivity.this, "Please enter category name", Toast.LENGTH_SHORT).show();
                         } else {
 
-                            if(!type[0].isEmpty())
+                            if(!type.isEmpty())
                             {
+
                                 //do nothing
                             }
                             else
@@ -155,16 +164,17 @@ public class CategoriesActivity extends AppCompatActivity {
 
                             }
 
-                            if(!nature[0].isEmpty())
+                            if(!nature.isEmpty())
                             {
                                //do nothing
                             }
                             else
                             {
-                                nature[0] = "constant";
+                                nature = "variable";
                             }
+
                             CategoryDataModel model = new CategoryDataModel(categoryname.getText().toString(),
-                                    categoryValue.getText().toString(), type[0], nature[0],color[0]
+                                    categoryValue.getText().toString(),type, nature ,colorSelected
 
 
                                     );
@@ -199,7 +209,7 @@ public class CategoriesActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new ColorPickerClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int selectedColor, Integer[] allColors) {
-                                        color[0] = selectedColor;
+                                        colorSelected = selectedColor;
                                         pickColor.setBackgroundColor(selectedColor);
                                     }
                                 })
