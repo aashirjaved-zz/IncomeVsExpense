@@ -7,8 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.tayyaba.incomeexpenses.IncomeViewPager.RecyclerView_ByCategory_Income.Adapter_ByCategory_Income;
-import com.example.tayyaba.incomeexpenses.IncomeViewPager.RecyclerView_ByCategory_Income.DataModel_ByCategory_Income;
 import com.example.tayyaba.incomeexpenses.R;
 
 import java.util.ArrayList;
@@ -21,16 +19,17 @@ public class Adapter_FutureExpenses extends RecyclerView.Adapter<Adapter_FutureE
 
     //TODO
     //populate this recyclerview
-    public static ArrayList<DataModel_FutureExpenses> fexData = new ArrayList<>();
+    public static ArrayList<DataModel_FutureExpenses> futureExpensesArrayList = new ArrayList<>();
 
     Context context;
     public Adapter_FutureExpenses(ArrayList<DataModel_FutureExpenses> fexData) {
-        this.fexData = fexData;
+        this.futureExpensesArrayList = fexData;
     }
 
     public Adapter_FutureExpenses(Context context)
     {
         this.context=context;
+        futureExpensesArrayList = new ArrayList<>();
     }
 
 
@@ -51,12 +50,12 @@ public class Adapter_FutureExpenses extends RecyclerView.Adapter<Adapter_FutureE
         // - get data from your itemsData at this position
         // - replace the contents of the view with that itemsData
 
-        viewHolder.desc_fex.setText(fexData.get(position).getDesc());
-        viewHolder.catName_fex.setText(fexData.get(position).getCatName());
-        viewHolder.month_fex.setText(fexData.get(position).getMonth());
-        viewHolder.date_fex.setText(fexData.get(position).getDate());
-        viewHolder.days_fex.setText(fexData.get(position).getDays());
-        viewHolder.amount_fex.setText(fexData.get(position).getAmount());
+        viewHolder.desc_fex.setText(futureExpensesArrayList.get(position).getDesc());
+        viewHolder.catName_fex.setText(futureExpensesArrayList.get(position).getCatName());
+        viewHolder.month_fex.setText(futureExpensesArrayList.get(position).getMonth());
+        viewHolder.date_fex.setText(futureExpensesArrayList.get(position).getDate());
+        viewHolder.days_fex.setText(futureExpensesArrayList.get(position).getDays());
+        viewHolder.amount_fex.setText(futureExpensesArrayList.get(position).getAmount());
 
 
 
@@ -68,12 +67,12 @@ public class Adapter_FutureExpenses extends RecyclerView.Adapter<Adapter_FutureE
 
         public ViewHolder(View itemLayoutView) {
             super(itemLayoutView);
-            desc_fex = (TextView) itemLayoutView.findViewById(R.id.descriptionAdd_fexp);
+            desc_fex = (TextView) itemLayoutView.findViewById(R.id.dec_fexp);
             catName_fex = (TextView) itemLayoutView.findViewById(R.id.catName_fexp);
             month_fex = (TextView) itemLayoutView.findViewById(R.id.month_fexp);
             date_fex = (TextView) itemLayoutView.findViewById(R.id.date_fexp);
             days_fex = (TextView) itemLayoutView.findViewById(R.id.days_to_fexp);
-            amount_fex = (TextView) itemLayoutView.findViewById(R.id.amount_details_inc);
+            amount_fex = (TextView) itemLayoutView.findViewById(R.id.amount_fexp);
 
         }
     }
@@ -81,6 +80,6 @@ public class Adapter_FutureExpenses extends RecyclerView.Adapter<Adapter_FutureE
 
     @Override
     public int getItemCount() {
-        return fexData.size();
+        return futureExpensesArrayList.size();
     }
 }

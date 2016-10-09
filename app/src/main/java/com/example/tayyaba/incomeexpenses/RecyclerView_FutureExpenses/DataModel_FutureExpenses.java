@@ -8,12 +8,12 @@ public class DataModel_FutureExpenses {
 
     private String desc, month, date,days,amount,catName;
 
-    DataModel_FutureExpenses()
+    public DataModel_FutureExpenses()
     {
 
     }
 
-    DataModel_FutureExpenses(String desc,String month,String date,String days,String amount)
+    public DataModel_FutureExpenses(String desc, String month, String date, String days, String amount)
     {
         this.desc=desc;
         this.month=month;
