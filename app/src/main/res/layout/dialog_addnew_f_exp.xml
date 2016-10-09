@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/transparent">
+
+    <RelativeLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/linearLayout">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/colorPrimary">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Expenditure"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:id="@+id/heading_txt"
+                    android:layout_centerInParent="true"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <ImageView
+                    android:id="@+id/show_img_view_fexp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/f_expenses"
+
+                    />
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/choose_img_btn_fexp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/show_img_view_fexp"
+                    android:layout_alignEnd="@id/show_img_view_fexp"
+                    android:clickable="true"
+                    app:fabSize="mini"
+                    android:src="@drawable/ic_plus_white_36dp"
+                    app:layout_anchor="@id/show_img_view_exp"
+                    app:layout_anchorGravity="bottom|right|end"
+                    android:layout_alignRight="@id/show_img_view_exp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pick Account"
+                    android:id="@+id/txt"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="24dp"
+                    android:layout_marginTop="26dp"
+                    android:textSize="14sp"
+                    />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pick Category"
+                        android:layout_marginTop="26dp"
+
+                        android:layout_marginLeft="24dp"
+                        android:textSize="14sp"
+                        />
+
+                    <com.jaredrummler.materialspinner.MaterialSpinner
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:ms_dropdown_height="wrap_content"
+                        android:textSize="14sp"
+                        app:ms_text_color="@color/colorPrimary"
+                        android:id="@+id/spinner_cat_fexp"
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/txt"
+
+                    android:layout_alignParentRight="true"
+                    android:orientation="vertical">
+
+
+                    <com.jaredrummler.materialspinner.MaterialSpinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:ms_dropdown_height="wrap_content"
+                        android:textSize="14sp"
+                        app:ms_text_color="@color/colorPrimary"
+                        android:id="@+id/spinner_accnt_fexp"
+                        android:prompt="@string/spinner_prompt"/>
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:id="@+id/amount_input_fexp"
+                android:inputType="number"
+                android:hint="Amount"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"/>
+            <EditText
+                android:id="@+id/descriptionAdd_fexp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Description"
+                android:textSize="14sp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"/>
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Every"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="20dp"/>
+               <com.jaredrummler.materialspinner.MaterialSpinner
+
+                   android:layout_width="58dp"
+                   android:layout_height="wrap_content"
+                   app:ms_dropdown_height="wrap_content"
+                   android:textSize="14sp"
+                   android:layout_marginTop="10dp"
+                   app:ms_text_color="@color/colorPrimary"
+                   android:id="@+id/spinner_every_fexp"
+                   />
+               </LinearLayout>
+
+
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Pick Date"
+                android:textSize="14sp"
+
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="19dp"
+                android:layout_marginRight="24dp"
+                android:id="@+id/pickDate_fexp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#757575"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                />
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="40dp"
+                android:background="@color/colorPrimary">
+
+                <ImageView
+                    android:id="@+id/canceldialog_fexp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/ic_close_white_24dp"/>
+
+                <ImageView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="14dp"
+                    android:src="@drawable/ic_check_white_24dp"
+                    android:layout_alignTop="@+id/canceldialog_fexp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="14dp"
+                    android:id="@+id/saveDialogue" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

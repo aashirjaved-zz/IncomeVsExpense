@@ -1,10 +1,16 @@
 package com.example.tayyaba.incomeexpenses;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.FrameLayout;
 
 import com.example.tayyaba.incomeexpenses.Activities.CategoriesActivity;
@@ -13,6 +19,7 @@ import com.example.tayyaba.incomeexpenses.Activities.FutureExpensesActivity;
 import com.example.tayyaba.incomeexpenses.Activities.IncomeActivity;
 import com.example.tayyaba.incomeexpenses.Activities.LimitsActivity;
 import com.example.tayyaba.incomeexpenses.Activities.ReportsActivity;
+import com.example.tayyaba.incomeexpenses.Activities.SettingsActivity;
 import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddCategory.DatabaseHandler;
 
 
@@ -90,5 +97,27 @@ public class MainActivity extends AppCompatActivity {
               startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.settings, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case R.id.settings:
+                Intent intent=new Intent(MainActivity.this,SettingsActivity.class);
+                startActivity(intent);
+
+
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
