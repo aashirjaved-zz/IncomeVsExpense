@@ -91,33 +91,27 @@ public class Fragment_ByCategoryExp extends Fragment {
         DatabaseHandlerExpense db1 = new DatabaseHandlerExpense(getContext());
         ArrayList<AddExpenseDataModel> expenseDataModels = db1.getAllExpenses();
         Integer totalamount =0;
-        for(CategoryDataModel model: categoryDataModels)
-        {
+        for(CategoryDataModel model: categoryDataModels) {
+            if (model.getCategoryType().contains("expense")) {
 
-            for(AddExpenseDataModel expenseData : expenseDataModels)
-            {
-                if(model.getCategoryName().contains(expenseData.getCategory()))
-                {
-                    totalamount = totalamount+expenseData.getAmount();
+                for (AddExpenseDataModel expenseData : expenseDataModels) {
+                    if (model.getCategoryName().contains(expenseData.getCategory())) {
+                        totalamount = totalamount + expenseData.getAmount();
+                    }
 
 
                 }
+                if (totalamount.equals(0)) {
+                    catData.add(new CategoryDataModel(model.getCategoryName(), model.getCategoryValue(), model.getCategoryType(), model.getCategoryNature(), model.getCategoryColor()));
+                    adapterByCategory_expenses.notifyDataSetChanged();
 
-
+                } else {
+                    catData.add(new CategoryDataModel(model.getCategoryName(), String.valueOf(totalamount), model.getCategoryType(), model.getCategoryNature(), model.getCategoryColor()));
+                    totalamount = 0;
+                    adapterByCategory_expenses.notifyDataSetChanged();
+                }
 
             }
-            if(totalamount.equals(0))
-            {
-                catData.add(new CategoryDataModel(model.getCategoryName(),model.getCategoryValue(),model.getCategoryType(),model.getCategoryNature(),model.getCategoryColor()));
-                adapterByCategory_expenses.notifyDataSetChanged();
-
-            }
-            else {
-                catData.add(new CategoryDataModel(model.getCategoryName(), String.valueOf(totalamount), model.getCategoryType(), model.getCategoryNature(), model.getCategoryColor()));
-                totalamount=0;
-                adapterByCategory_expenses.notifyDataSetChanged();
-            }
-
         }
 
 

@@ -13,7 +13,7 @@ public class DataModel_ByCategory_Income {
 
     }
 
-    DataModel_ByCategory_Income(String catName,String amount)
+    public DataModel_ByCategory_Income(String catName, String amount)
     {
         this.catName=catName;
         this.amount=amount;

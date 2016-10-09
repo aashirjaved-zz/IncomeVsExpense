@@ -20,7 +20,7 @@ public class Adapter_Child_ByDay_Income extends RecyclerView.Adapter<Adapter_Chi
     //TODO
     //Populate dialog ka recyclerview jo k ye hy
 
-    private ArrayList<DataModel_Child_ByDay_income> childdayData_inc = new ArrayList<>();
+    public static ArrayList<DataModel_Child_ByDay_income> childdayData_inc = new ArrayList<>();
 
     Context context;
     public Adapter_Child_ByDay_Income(ArrayList<DataModel_Child_ByDay_income> childdayData_inc) {

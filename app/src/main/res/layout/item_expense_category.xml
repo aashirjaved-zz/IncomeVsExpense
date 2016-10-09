@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:text="Category Name"
         android:textSize="20sp"
-        android:id="@+id/catName_expense_Category"
+        android:id="@+id/catnameExpense"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"/>
     <LinearLayout
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:id="@+id/ll1"
-        android:layout_below="@id/catName_expense_Category"
+        android:layout_below="@id/catnameExpense"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
         <TextView

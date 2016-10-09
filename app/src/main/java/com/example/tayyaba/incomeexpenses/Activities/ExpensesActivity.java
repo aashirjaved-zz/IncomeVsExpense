@@ -162,125 +162,136 @@ public class ExpensesActivity extends AppCompatActivity implements AdapterView.O
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.add:
-                final Dialog dialog = new Dialog(this);
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                dialog.setContentView(R.layout.dialog_addnew_exp);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                MaterialSpinner spinnerCat = (MaterialSpinner) dialog.findViewById(R.id.spinner_cat_exp);
-                ImageView saveData = (ImageView) dialog.findViewById(R.id.saveDialogue);
-                final EditText amount = (EditText) dialog.findViewById(R.id.amount_input_exp);
-                final EditText description = (EditText) dialog.findViewById(R.id.descriptionAdd);
-
-
                 DatabaseHandler db = new DatabaseHandler(getApplicationContext());
                 ArrayList<CategoryDataModel> listofCategories = db.listofCategories();
                 ArrayList<String> listofcat = new ArrayList<>();
 
                 for (CategoryDataModel model : listofCategories) {
-                    listofcat.add(model.getCategoryName());
+                    if(model.getCategoryType().contains("expense"))
+                        listofcat.add(model.getCategoryName());
                 }
-                spinnerCat.setItems(listofcat);
-
-                selectedCategory = listofCategories.get(0).getCategoryName();
-                Log.v("Spinner Value", spinnerCat.getItems().get(0).toString());
-
-                spinnerCat.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
-
-                    @Override
-                    public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
-                        selectedCategory = item;
-                        Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_LONG).show();
-                    }
-                });
-                pickDate = (TextView
-                        ) dialog.findViewById(R.id.pickDate);
-                pickDate.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Calendar now = Calendar.getInstance();
-                        DatePickerDialog dpd = DatePickerDialog.newInstance(
-                                ExpensesActivity.this,
-                                now.get(Calendar.YEAR),
-                                now.get(Calendar.MONTH),
-                                now.get(Calendar.DAY_OF_MONTH)
-                        );
-
-                        dpd.show(getFragmentManager(), "Datepickerdialog");
-
-                    }
-                });
+                if(listofcat.isEmpty())
+                {
+                    Toast.makeText(getApplicationContext(),"Please add category first",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(ExpensesActivity.this,CategoriesActivity.class);
+                    startActivity(intent);
+                }
+                else {
 
 
+                    final Dialog dialog = new Dialog(this);
+                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    dialog.setContentView(R.layout.dialog_addnew_exp);
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-                saveData.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        selectedAmount = Integer.valueOf(amount.getText().toString());
-                        descriptionSaved = description.getText().toString();
-                        if (!selectedAccount.isEmpty() || !descriptionSaved.isEmpty() || selectedCategory.isEmpty()) {
-                            //TODO save date to database
+                    MaterialSpinner spinnerCat = (MaterialSpinner) dialog.findViewById(R.id.spinner_cat_exp);
+                    ImageView saveData = (ImageView) dialog.findViewById(R.id.saveDialogue);
+                    final EditText amount = (EditText) dialog.findViewById(R.id.amount_input_exp);
+                    final EditText description = (EditText) dialog.findViewById(R.id.descriptionAdd);
 
-                            AddExpenseDataModel model = new AddExpenseDataModel(selectedAmount, descriptionSaved, stringDate, "image", selectedCategory);
-                            DatabaseHandlerExpense db = new DatabaseHandlerExpense(getApplicationContext());
-                            db.addExpense(model);
-                            Toast.makeText(getApplicationContext(), "Added Successfuly", Toast.LENGTH_SHORT).show();
 
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Important fields are empty", Toast.LENGTH_SHORT).show();
+                    spinnerCat.setItems(listofcat);
+
+                    selectedCategory = listofcat.get(0);
+                    Log.v("Spinner Value", selectedCategory);
+                    Log.v("Spinner Value", spinnerCat.getItems().get(0).toString());
+
+                    spinnerCat.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
+
+                        @Override
+                        public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+                            selectedCategory = item;
+                            Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_LONG).show();
+                        }
+                    });
+                    pickDate = (TextView
+                            ) dialog.findViewById(R.id.pickDate);
+                    pickDate.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Calendar now = Calendar.getInstance();
+                            DatePickerDialog dpd = DatePickerDialog.newInstance(
+                                    ExpensesActivity.this,
+                                    now.get(Calendar.YEAR),
+                                    now.get(Calendar.MONTH),
+                                    now.get(Calendar.DAY_OF_MONTH)
+                            );
+
+                            dpd.show(getFragmentManager(), "Datepickerdialog");
 
                         }
-
-                    }
-                });
-
-                MaterialSpinner spinnerAcc = (MaterialSpinner) dialog.findViewById(R.id.spinner_accnt_exp);
-                spinnerAcc.setItems("Account 1", "Account 2");
-                spinnerAcc.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
-
-                    @Override
-                    public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
-                        selectedAccount = item;
-                        Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_LONG).show();
-                    }
-                });
+                    });
 
 
-                fab = (FloatingActionButton) dialog.findViewById(R.id.choose_img_btn_exp);
-                showImage = (ImageView) dialog.findViewById(R.id.show_img_view_exp);
-                fab.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        final CharSequence[] options = {"Take Photo", "Choose from Gallery", "Cancel"};
+                    saveData.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            selectedAmount = Integer.valueOf(amount.getText().toString());
+                            descriptionSaved = description.getText().toString();
+                            if (!selectedAccount.isEmpty() || !descriptionSaved.isEmpty() || !selectedCategory.isEmpty()) {
+                                //TODO save date to database
 
-                        AlertDialog.Builder builder = new AlertDialog.Builder(ExpensesActivity.this);
-                        builder.setTitle("Add Photo!");
-                        builder.setItems(options, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int item) {
-                                if (options[item].equals("Take Photo")) {
-                                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                                    File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
-                                    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
-                                    startActivityForResult(intent, 1);
-                                } else if (options[item].equals("Choose from Gallery")) {
-                                    Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                                    startActivityForResult(intent, 2);
+                                AddExpenseDataModel model = new AddExpenseDataModel(selectedAmount, descriptionSaved, stringDate, "image", selectedCategory);
+                                DatabaseHandlerExpense db = new DatabaseHandlerExpense(getApplicationContext());
+                                db.addExpense(model);
+                                Toast.makeText(getApplicationContext(), "Added Successfuly", Toast.LENGTH_SHORT).show();
+                                dialog.dismiss();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Important fields are empty", Toast.LENGTH_SHORT).show();
 
-                                } else if (options[item].equals("Cancel")) {
-                                    dialog.dismiss();
-                                }
                             }
-                        });
-                        builder.show();
+
+                        }
+                    });
+
+                    MaterialSpinner spinnerAcc = (MaterialSpinner) dialog.findViewById(R.id.spinner_accnt_exp);
+                    spinnerAcc.setItems("Account 1");
+                    spinnerAcc.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
+
+                        @Override
+                        public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+                            selectedAccount = item;
+                            Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_LONG).show();
+                        }
+                    });
 
 
-                    }
-                });
+                    fab = (FloatingActionButton) dialog.findViewById(R.id.choose_img_btn_exp);
+                    showImage = (ImageView) dialog.findViewById(R.id.show_img_view_exp);
+                    fab.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            final CharSequence[] options = {"Take Photo", "Choose from Gallery", "Cancel"};
+
+                            AlertDialog.Builder builder = new AlertDialog.Builder(ExpensesActivity.this);
+                            builder.setTitle("Add Photo!");
+                            builder.setItems(options, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int item) {
+                                    if (options[item].equals("Take Photo")) {
+                                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                                        File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
+                                        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+                                        startActivityForResult(intent, 1);
+                                    } else if (options[item].equals("Choose from Gallery")) {
+                                        Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                                        startActivityForResult(intent, 2);
+
+                                    } else if (options[item].equals("Cancel")) {
+                                        dialog.dismiss();
+                                    }
+                                }
+                            });
+                            builder.show();
 
 
-                dialog.show();
-                return true;
+                        }
+                    });
+
+
+                    dialog.show();
+                    return true;
+                }
             default:
                 return super.onOptionsItemSelected(item);
         }

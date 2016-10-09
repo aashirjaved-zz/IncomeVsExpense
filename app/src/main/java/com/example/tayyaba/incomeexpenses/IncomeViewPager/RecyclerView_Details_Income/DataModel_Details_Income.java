@@ -8,10 +8,10 @@ public class DataModel_Details_Income {
 
    private String desc,catName,date,amount;
 
-    DataModel_Details_Income()
+    public DataModel_Details_Income()
     {}
 
-    DataModel_Details_Income(String desc,String catName,String date,String amount)
+    public DataModel_Details_Income(String desc, String catName, String date, String amount)
     {
         this.desc=desc;
         this.catName=catName;

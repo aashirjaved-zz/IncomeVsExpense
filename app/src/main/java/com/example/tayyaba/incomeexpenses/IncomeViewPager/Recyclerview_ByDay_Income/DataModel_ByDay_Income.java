@@ -12,7 +12,7 @@ public class DataModel_ByDay_Income {
     {
 
     }
-    DataModel_ByDay_Income(String day,String amount)
+    public DataModel_ByDay_Income(String day, String amount)
     {
         this.day=day;
         this.amount=amount;

@@ -2,6 +2,7 @@ package com.example.tayyaba.incomeexpenses.CategoriesViewPager.RecyclerViewExpen
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,7 +61,7 @@ public class Adapter_Expenses_Category extends RecyclerView.Adapter<Adapter_Expe
 
         public ViewHolder(View itemLayoutView) {
             super(itemLayoutView);
-            catName_expense_cat = (TextView) itemLayoutView.findViewById(R.id.catName_income_Category);
+            catName_expense_cat = (TextView) itemLayoutView.findViewById(R.id.catnameExpense);
             type_expense_cat = (TextView) itemLayoutView.findViewById(R.id.type_expense_Category);
 
             defVal_expense_cat = (TextView) itemLayoutView.findViewById(R.id.defaultVal_expense_Category);}

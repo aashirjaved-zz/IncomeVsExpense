@@ -7,8 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.tayyaba.incomeexpenses.IncomeViewPager.Recyclerview_ByDay_Income.Adapter_Child_ByDay_Income;
-import com.example.tayyaba.incomeexpenses.IncomeViewPager.Recyclerview_ByDay_Income.DataModel_Child_ByDay_income;
 import com.example.tayyaba.incomeexpenses.R;
 
 import java.util.ArrayList;
@@ -22,7 +20,7 @@ public class Adapter_Details_Income extends RecyclerView.Adapter<Adapter_Details
     //TODO
     //Populate dialog ka recyclerview jo k ye hy
 
-    private ArrayList<DataModel_Details_Income> detailsData_inc = new ArrayList<>();
+    public static ArrayList<DataModel_Details_Income> detailsData_inc = new ArrayList<>();
 
     Context context;
     public Adapter_Details_Income(ArrayList<DataModel_Details_Income> detailsData_inc) {

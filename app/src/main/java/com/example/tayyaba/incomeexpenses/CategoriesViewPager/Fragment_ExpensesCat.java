@@ -42,20 +42,28 @@ public class Fragment_ExpensesCat extends Fragment {
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView_expense_Category);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         Adapter_Expenses_Category adapter_expenses_category = new Adapter_Expenses_Category(getContext());
-        recyclerView.setAdapter(adapter_expenses_category);
+        expenseData.clear();
         DatabaseHandler db = new DatabaseHandler(getContext());
         ArrayList<CategoryDataModel> listofcat =  db.listofCategories();
         for( CategoryDataModel model: listofcat)
         {
-            if(model.getCategoryType().toLowerCase().contains("expense"))
+            if(model.getCategoryType().contains("expense"))
             {
-
                 expenseData.add(new DataModel_expenses_Category(model.getCategoryName(),model.getCategoryValue(),model.getCategoryType()));
-                adapter_expenses_category.notifyDataSetChanged();
-
-
+                recyclerView.setAdapter(adapter_expenses_category);
+               // adapter_expenses_category.notifyDataSetChanged();
             }
+            else
+            {
+//                expenseData.remove(model);
+//                recyclerView.setAdapter(adapter_expenses_category);
+//                adapter_expenses_category.notifyDataSetChanged();
+
+                //do nothing
+            }
+
         }
+        adapter_expenses_category.notifyDataSetChanged();
 
 
 

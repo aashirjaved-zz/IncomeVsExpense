@@ -9,7 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tayyaba.incomeexpenses.IncomeViewPager.RecyclerView_Details_Income.Adapter_Details_Income;
+import com.example.tayyaba.incomeexpenses.IncomeViewPager.RecyclerView_Details_Income.DataModel_Details_Income;
 import com.example.tayyaba.incomeexpenses.R;
+import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddExpense.AddExpenseDataModel;
+import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddIncome.DataBaseHandlerIncome;
+
+import java.util.ArrayList;
+
+import static com.example.tayyaba.incomeexpenses.IncomeViewPager.RecyclerView_Details_Income.Adapter_Details_Income.detailsData_inc;
 
 /**
  * Created by Tayyaba on 9/26/2016.
@@ -47,6 +54,19 @@ public class Fragment_DetailsInc extends Fragment {
         Adapter_Details_Income adapter_details_income=new Adapter_Details_Income(getActivity());
 
         recyclerView_details_inc.setAdapter(adapter_details_income);
+
+        detailsData_inc.clear();
+        DataBaseHandlerIncome db = new DataBaseHandlerIncome(getContext());
+        ArrayList<AddExpenseDataModel> income = db.getAllincome();
+        for(AddExpenseDataModel dataModel: income)
+        {
+            detailsData_inc.add(new DataModel_Details_Income(dataModel.getDescription(),
+                    dataModel.getCategory(),
+                    dataModel.getDate(),
+                    dataModel.getAmount().toString()
+                    ));
+            adapter_details_income.notifyDataSetChanged();
+        }
         return view;
     }
 }

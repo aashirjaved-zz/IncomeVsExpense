@@ -2,10 +2,6 @@ package com.example.tayyaba.incomeexpenses.CategoriesViewPager;
 
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.tayyaba.incomeexpenses.ExpensesViewPager.Fragment_ByCategoryExp;
-import com.example.tayyaba.incomeexpenses.ExpensesViewPager.Fragment_ByDayExp;
-import com.example.tayyaba.incomeexpenses.ExpensesViewPager.Fragment_DetailsExp;
-
 /**
  * Created by tayyabataimur on 10/5/16.
  */
@@ -23,10 +19,11 @@ public class FragmentAdapterCat extends FragmentPagerAdapter {
 
         switch (position) {
             case 0:
-                Fragment_ExpensesCat tab1_cat = new Fragment_ExpensesCat();
+
+                Fragment_IncomeCat tab1_cat = new Fragment_IncomeCat();
                 return tab1_cat;
             case 1:
-                Fragment_IncomeCat tab2_cat = new Fragment_IncomeCat();
+                Fragment_ExpensesCat tab2_cat = new Fragment_ExpensesCat();
                 return tab2_cat;
             default:
                 return null;

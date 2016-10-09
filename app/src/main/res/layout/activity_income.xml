@@ -50,8 +50,10 @@
         android:layout_width="match_parent"
         android:layout_height="46dp"
 
+        android:background="@color/colorPrimary"
         android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimary">
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -98,6 +100,7 @@
                 android:textColor="@color/white"
                 android:layout_marginLeft="20dp"/>
             <TextView
+                android:id="@+id/totalincome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"

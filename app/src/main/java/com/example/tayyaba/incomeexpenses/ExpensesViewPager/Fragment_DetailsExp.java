@@ -57,6 +57,7 @@ public class Fragment_DetailsExp extends Fragment {
         for(AddExpenseDataModel expenseDataModel : expenses)
         {
             detailsData.add(new Details_DataModel_Expenses(expenseDataModel.getDescription(),expenseDataModel.getAmount().toString(),expenseDataModel.getCategory(),expenseDataModel.getDate()));
+            adapter_details_expenses.notifyDataSetChanged();
         }
 
 

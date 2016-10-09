@@ -123,7 +123,7 @@ public class CategoriesActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         type = "expense";
-                        Toast.makeText(getApplicationContext(),"Income selected",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Expense selected",Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -172,7 +172,7 @@ public class CategoriesActivity extends AppCompatActivity {
                             {
                                 nature = "variable";
                             }
-
+                            Log.v("CategoryDetails",categoryname.getText().toString()+type);
                             CategoryDataModel model = new CategoryDataModel(categoryname.getText().toString(),
                                     categoryValue.getText().toString(),type, nature ,colorSelected
 
