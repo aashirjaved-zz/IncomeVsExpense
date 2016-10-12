@@ -25,9 +25,58 @@
             android:textStyle="bold"/>
 
     </android.support.v7.widget.Toolbar>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="repor"
-        android:layout_centerInParent="true"/>
+    <RelativeLayout
+        android:layout_below="@id/toolbar_reports"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:id="@+id/spinnerlayout"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Select Report type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.jaredrummler.materialspinner.MaterialSpinner
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:ms_dropdown_height="wrap_content"
+                android:textSize="14sp"
+                app:ms_text_color="@color/colorPrimary"
+                android:id="@+id/spinner_reports"
+                />
+
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_below="@id/spinnerlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.jaredrummler.materialspinner.MaterialSpinner
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:ms_dropdown_height="wrap_content"
+                android:textSize="14sp"
+                app:ms_text_color="@color/colorPrimary"
+                android:id="@+id/spinner_selecttype"
+                />
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <android.support.v7.widget.RecyclerView
+                android:layout_below="@id/spinner_selecttype"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/recycleView_reports"/>
+
+            </ScrollView>
+        </RelativeLayout>
+    </RelativeLayout>
+
 </RelativeLayout>

@@ -60,7 +60,7 @@ public class FutureExpensesActivity extends AppCompatActivity implements DatePic
         //future expenses ka recyclerview
         Calendar c = Calendar.getInstance();
         System.out.println("Current time => " + c.getTime());
-totalamounttxt   = (TextView) findViewById(R.id.totalfutureamount) ;
+        totalamounttxt   = (TextView) findViewById(R.id.totalfutureamount) ;
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         String formattedDate = df.format(c.getTime());
         selectedDate = formattedDate;

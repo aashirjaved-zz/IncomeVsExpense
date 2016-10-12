@@ -1,16 +1,14 @@
 package com.example.tayyaba.incomeexpenses;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.FrameLayout;
 
 import com.example.tayyaba.incomeexpenses.Activities.CategoriesActivity;
@@ -20,11 +18,12 @@ import com.example.tayyaba.incomeexpenses.Activities.IncomeActivity;
 import com.example.tayyaba.incomeexpenses.Activities.LimitsActivity;
 import com.example.tayyaba.incomeexpenses.Activities.ReportsActivity;
 import com.example.tayyaba.incomeexpenses.Activities.SettingsActivity;
-import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddCategory.DatabaseHandler;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    String[] perms = {"android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.READ_EXTERNAL_STORAGE", "android.permission.CAMERA"
+    };
+    int permsRequestCode = 200;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +34,10 @@ public class MainActivity extends AppCompatActivity {
        // customToolbar.setNavigationIcon(R.drawable.ic_arrow_right_white_24dp);
 
 
-
+        if (Build.VERSION.SDK_INT < 23)
+            ContextCompat.checkSelfPermission(this, String.valueOf(perms));
+        else
+            requestPermissions(perms, permsRequestCode);
         //Testing purpose
         //TODO integrate pup dialogue box to add category
 

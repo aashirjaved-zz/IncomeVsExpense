@@ -2,9 +2,6 @@ package com.example.tayyaba.incomeexpenses.LimitsViewPager;
 
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.tayyaba.incomeexpenses.IncomeViewPager.Fragment_ByCategoryInc;
-import com.example.tayyaba.incomeexpenses.IncomeViewPager.Fragment_ByDayInc;
-
 /**
  * Created by Tayyaba on 9/26/2016.
  */
@@ -21,10 +18,10 @@ public class FragmentAdapterLimits extends FragmentPagerAdapter {
 
         switch (position) {
             case 0:
-                Fragment_DefinedLimits tab1 = new Fragment_DefinedLimits();
+                Fragment_ThisMonth tab1 = new Fragment_ThisMonth();
                 return tab1;
             case 1:
-                Fragment_ThisMonth tab2 = new Fragment_ThisMonth();
+                Fragment_DefinedLimits tab2 = new Fragment_DefinedLimits();
                 return tab2;
             default:
                 return null;

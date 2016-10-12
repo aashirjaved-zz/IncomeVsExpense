@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_base"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.tayyaba.incomeexpenses.Activities.BalanceActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/heading"
+            android:text="TOTAL BALANCE"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_below="@id/heading"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_marginTop="50dp"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="0dp"
+                    android:text="TOTAL EXPENSE"
+                    android:layout_weight="5"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="500 "
+                    android:id="@+id/expensetotal"
+
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="50dp"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="0dp"
+                    android:text="TOTAL INCOME"
+                    android:layout_weight="5"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/incometotal"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="500 "
+
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="50dp"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="0dp"
+                    android:text="TOTAL Balance"
+                    android:layout_weight="5"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/balancetotal"
+                    android:layout_width="0dp"
+                    android:textSize="35sp"
+                    android:layout_weight="2"
+                    android:text="500 "
+android:textColor="#ff0000"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

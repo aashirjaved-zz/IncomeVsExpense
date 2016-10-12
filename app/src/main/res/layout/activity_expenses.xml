@@ -64,23 +64,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:id="@+id/imageViewSavecsv1"
             android:src="@drawable/ic_chart_pie_white_24dp"/>
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="20dp"
-        android:src="@drawable/ic_file_white_24dp"/>
+        android:src="@drawable/ic_file_white_24dp"
+        android:id="@+id/imageViewSavecsv" />
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="20dp"
+        android:id="@+id/imageViewSavecsv2"
         android:src="@drawable/ic_google_drive_white_24dp"/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
+        android:id="@+id/imageViewSavecsv3"
         android:layout_marginLeft="20dp"
         android:src="@drawable/ic_dropbox_white_24dp"/>
 </LinearLayout>

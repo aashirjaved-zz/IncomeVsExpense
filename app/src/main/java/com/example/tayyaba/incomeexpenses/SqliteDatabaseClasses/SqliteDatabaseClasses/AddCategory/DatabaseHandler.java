@@ -49,7 +49,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
      public void addCategory(CategoryDataModel model) {
         SQLiteDatabase db = this.getWritableDatabase();
-Log.v("SavingDatabase",model.getCategoryName()+"-"+model.getCategoryValue());
+        Log.v("SavingDatabase",model.getCategoryName()+"-"+model.getCategoryValue());
         ContentValues values = new ContentValues();
         values.put(KEY_Categoryname, model.getCategoryName()); // Category Name
         values.put(KEY_Categorvalue, model.getCategoryValue()); // Category Name

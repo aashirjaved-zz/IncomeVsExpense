@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -35,6 +36,7 @@ import com.example.tayyaba.incomeexpenses.R;
 import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddCategory.CategoryDataModel;
 import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddCategory.DatabaseHandler;
 import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddExpense.AddExpenseDataModel;
+import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddExpense.DatabaseHandlerExpense;
 import com.example.tayyaba.incomeexpenses.SqliteDatabaseClasses.SqliteDatabaseClasses.AddIncome.DataBaseHandlerIncome;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
@@ -42,12 +44,15 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+
+import au.com.bytecode.opencsv.CSVWriter;
 
 public class IncomeActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     public static String encodedimage;
@@ -70,7 +75,34 @@ public class IncomeActivity extends AppCompatActivity implements DatePickerDialo
         setContentView(R.layout.activity_income);
         totalAmounttoshow = (TextView) findViewById(R.id.totalincome);
 
-
+        ImageView img = (ImageView) findViewById(R.id.savetodb) ;
+        ImageView img1 = (ImageView) findViewById(R.id.savetodb1) ;
+        ImageView img2 = (ImageView) findViewById(R.id.savetodb2) ;
+        ImageView img3 = (ImageView) findViewById(R.id.savetodb3) ;
+        img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                exportDB();
+            }
+        });
+        img1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                exportDB();
+            }
+        });
+        img2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                exportDB();
+            }
+        });
+        img3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                exportDB();
+            }
+        });
         //Today's Date
         Calendar c = Calendar.getInstance();
         System.out.println("Current time => " + c.getTime());
@@ -167,7 +199,13 @@ public class IncomeActivity extends AppCompatActivity implements DatePickerDialo
                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     TextView heading = (TextView) dialog.findViewById(R.id.heading_txt);
                     heading.setText("Add Income");
-
+                    ImageView cancel = (ImageView) dialog.findViewById(R.id.canceldialog);
+                    cancel.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog.dismiss();
+                        }
+                    });
                     MaterialSpinner spinnerCat = (MaterialSpinner) dialog.findViewById(R.id.spinner_cat_exp);
                     ImageView saveData = (ImageView) dialog.findViewById(R.id.saveDialogue);
                     final EditText amount = (EditText) dialog.findViewById(R.id.amount_input_exp);
@@ -344,6 +382,34 @@ public class IncomeActivity extends AppCompatActivity implements DatePickerDialo
                 showImage.setImageBitmap(thumbnail);
                 // encodedimage = BitMapToString(thumbnail).replace("\\s", "");
             }
+        }
+    }
+    public void exportDB() {
+        File dbFile = getDatabasePath("expense.db");
+        DatabaseHandlerExpense dbhelper = new DatabaseHandlerExpense(getApplicationContext());
+        File exportDir = new File(Environment.getExternalStorageDirectory(), "");
+
+        if (!exportDir.exists()) {
+            exportDir.mkdirs();
+        }
+        File file = new File(exportDir, "income.csv");
+
+        try {
+            file.createNewFile();
+            CSVWriter csvWrite = new CSVWriter(new FileWriter(file));
+            SQLiteDatabase db = dbhelper.getReadableDatabase();
+            Cursor curCSV = db.rawQuery("SELECT * FROM income", null);
+            csvWrite.writeNext(curCSV.getColumnNames());
+            while (curCSV.moveToNext()) {
+                //Which column you want to exprort
+                String arrStr[] = {curCSV.getString(0), curCSV.getString(1), curCSV.getString(2), curCSV.getString(3), curCSV.getString(4)};
+                csvWrite.writeNext(arrStr);
+            }
+            csvWrite.close();
+            curCSV.close();
+            Toast.makeText(getApplicationContext(),"CSV file saved with the name income.cv",Toast.LENGTH_LONG).show();
+        } catch (Exception sqlEx) {
+            Log.e("MainActivity", sqlEx.getMessage(), sqlEx);
         }
     }
 }

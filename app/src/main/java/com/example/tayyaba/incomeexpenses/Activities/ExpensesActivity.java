@@ -85,8 +85,36 @@ public class ExpensesActivity extends AppCompatActivity implements AdapterView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expenses);
-
-
+        ImageView saveCSV = (ImageView) findViewById(R.id.imageViewSavecsv) ;
+        ImageView saveCSV1 = (ImageView) findViewById(R.id.imageViewSavecsv1) ;
+        ImageView saveCSV2 = (ImageView) findViewById(R.id.imageViewSavecsv2) ;
+        ImageView saveCSV3= (ImageView) findViewById(R.id.imageViewSavecsv3) ;
+         saveCSV.setOnClickListener(new View.OnClickListener() {
+            @Override
+           public void onClick(View view) {
+        Log.v("Savedb","clicked");
+        exportDB();
+    }
+        });
+        saveCSV1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.v("Savedb","clicked");
+                exportDB();
+            }
+        });   saveCSV2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.v("Savedb","clicked");
+                exportDB();
+            }
+        });   saveCSV3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.v("Savedb","clicked");
+                exportDB();
+            }
+        });
         Toolbar expToolbar = (Toolbar) findViewById(R.id.toolbar_exp);
         setSupportActionBar(expToolbar);
         expToolbar.setNavigationIcon(R.drawable.ic_arrow_right_white_24dp);
@@ -104,7 +132,7 @@ public class ExpensesActivity extends AppCompatActivity implements AdapterView.O
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         String formattedDate = df.format(c.getTime());
         stringDate = formattedDate;
-        //exportDB();
+
 
 
         totalAmounttoshow = (TextView) findViewById(R.id.totalpaisa);
@@ -186,9 +214,15 @@ public class ExpensesActivity extends AppCompatActivity implements AdapterView.O
 
                     MaterialSpinner spinnerCat = (MaterialSpinner) dialog.findViewById(R.id.spinner_cat_exp);
                     ImageView saveData = (ImageView) dialog.findViewById(R.id.saveDialogue);
+                    ImageView closedialogue = (ImageView) dialog.findViewById(R.id.canceldialog);
                     final EditText amount = (EditText) dialog.findViewById(R.id.amount_input_exp);
                     final EditText description = (EditText) dialog.findViewById(R.id.descriptionAdd);
-
+                    closedialogue.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog.dismiss();
+                        }
+                    });
 
                     spinnerCat.setItems(listofcat);
 
@@ -415,11 +449,12 @@ public class ExpensesActivity extends AppCompatActivity implements AdapterView.O
             csvWrite.writeNext(curCSV.getColumnNames());
             while (curCSV.moveToNext()) {
                 //Which column you want to exprort
-                String arrStr[] = {curCSV.getString(0), curCSV.getString(1), curCSV.getString(2)};
+                String arrStr[] = {curCSV.getString(0), curCSV.getString(1), curCSV.getString(2),curCSV.getString(3),curCSV.getString(4)};
                 csvWrite.writeNext(arrStr);
             }
             csvWrite.close();
             curCSV.close();
+            Toast.makeText(getApplicationContext(),"CSV file saved with the name expenses.cv",Toast.LENGTH_LONG).show();
         } catch (Exception sqlEx) {
             Log.e("MainActivity", sqlEx.getMessage(), sqlEx);
         }

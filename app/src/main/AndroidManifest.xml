@@ -52,8 +52,10 @@
             android:name=".Activities.ReportsActivity"
             android:label=""
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".Activities.SettingsActivity"
-            android:label=""></activity>
+        <activity
+            android:name=".Activities.SettingsActivity"
+            android:label="" />
+        <activity android:name=".Activities.BalanceActivity"></activity>
     </application>
 
 </manifest>
