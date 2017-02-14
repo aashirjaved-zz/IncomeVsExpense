@@ -55,7 +55,8 @@
         <activity
             android:name=".Activities.SettingsActivity"
             android:label="" />
-        <activity android:name=".Activities.BalanceActivity"></activity>
+        <activity android:name=".Activities.BalanceActivity" />
+        <activity android:name=".Activities.BackupActivity"></activity>
     </application>
 
 </manifest>

@@ -39,7 +39,16 @@ public class SettingsActivity extends AppCompatActivity implements TimePickerDia
                 startActivity(intent);
             }
         });
-
+        TextView backUP = (TextView) findViewById(R.id.backupdata);
+        backUP.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(SettingsActivity.this, BackupActivity.class);
+                        startActivity(intent);
+                    }
+                }
+        );
 
 
        final BigDecimal num=new BigDecimal("31");
