@@ -40,13 +40,6 @@ public class MainActivity extends AppCompatActivity {
             requestPermissions(perms, permsRequestCode);
         //Testing purpose
         //TODO integrate pup dialogue box to add category
-
-
-
-
-
-
-
         FrameLayout expenses=(FrameLayout)findViewById(R.id.expenses);
         expenses.setOnClickListener(new View.OnClickListener() {
             @Override

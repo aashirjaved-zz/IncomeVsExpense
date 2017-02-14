@@ -10,7 +10,7 @@ import android.util.Log;
 import java.util.ArrayList;
 
 /**
- * Created by aashi on 9/28/2016.
+ * Created by aashi on 9/28/2016..
  */
 
 public class DatabaseHandler extends SQLiteOpenHelper {
@@ -25,7 +25,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_Categortype = "type";
     private static final String KEY_Categorvalue = "value";
     private static final String KEY_Categornature = "nature";
-    private static final String KEY_Categorycolor= "color";
+    private static final String KEY_Categorycolor = "color";
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -36,7 +36,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String CREATE_CATEGORY_TABLE = "CREATE TABLE " + TABLE_CATEGORYLIST + "("
                 + KEY_ID + " INTEGER PRIMARY KEY,"
-                +  KEY_Categoryname + " TEXT," +KEY_Categortype + " TEXT,"+ KEY_Categornature + " TEXT," + KEY_Categorycolor + " INTEGER,"+  KEY_Categorvalue + " TEXT" + ")";
+                + KEY_Categoryname + " TEXT," + KEY_Categortype + " TEXT," + KEY_Categornature + " TEXT," + KEY_Categorycolor + " INTEGER," + KEY_Categorvalue + " TEXT" + ")";
         sqLiteDatabase.execSQL(CREATE_CATEGORY_TABLE);
     }
 
@@ -47,9 +47,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Create tables again
         onCreate(sqLiteDatabase);
     }
-     public void addCategory(CategoryDataModel model) {
+
+    public void addCategory(CategoryDataModel model) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Log.v("SavingDatabase",model.getCategoryName()+"-"+model.getCategoryValue());
+        Log.v("SavingDatabase", model.getCategoryName() + "-" + model.getCategoryValue());
         ContentValues values = new ContentValues();
         values.put(KEY_Categoryname, model.getCategoryName()); // Category Name
         values.put(KEY_Categorvalue, model.getCategoryValue()); // Category Name
@@ -57,15 +58,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_Categornature, model.getCategoryNature());
         values.put(KEY_Categorycolor, model.getCategoryColor());
 
-         // Category Name
+        // Category Name
 
 
         // Inserting Row
         db.insert(TABLE_CATEGORYLIST, null, values);
         db.close(); // Closing database connection
     }
-    public ArrayList<CategoryDataModel> listofCategories()
-    {
+
+    public ArrayList<CategoryDataModel> listofCategories() {
         ArrayList<CategoryDataModel> listofCategories = new ArrayList<>();
         String selectQuery = "SELECT  * FROM " + TABLE_CATEGORYLIST;
 
@@ -75,7 +76,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
-                CategoryDataModel model = new CategoryDataModel(cursor.getString(1),cursor.getString(5),cursor.getString(2),cursor.getString(3),cursor.getInt(4));
+                CategoryDataModel model = new CategoryDataModel(cursor.getString(1), cursor.getString(5), cursor.getString(2), cursor.getString(3), cursor.getInt(4));
 
                 // Adding contact to list
                 listofCategories.add(model);
@@ -87,5 +88,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return listofCategories;
     }
 
-
+    public String getReport() {
+        String query = "SELECT SUM(Amount) FROM" + TABLE_CATEGORYLIST;
+        return query;
+    }
 }
